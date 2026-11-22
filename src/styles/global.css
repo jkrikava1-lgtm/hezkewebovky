@@ -27,6 +27,9 @@ html.lenis, html.lenis body {
 
 body {
   background-color: var(--color-dark);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(200, 255, 0, 0.045) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 95%, rgba(200, 255, 0, 0.02) 0%, transparent 50%);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   cursor: none;
@@ -239,25 +242,37 @@ body.cursor-hover .cursor-ring {
   }
 }
 
+/* ===== HERO BACKGROUND EFFECTS ===== */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -15%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(ellipse at 25% 40%, rgba(200, 255, 0, 0.07) 0%, transparent 55%);
+  pointer-events: none;
+  animation: hero-glow 9s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(6%, -8%) scale(1.07); }
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(200, 255, 0, 0.065) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, black 0%, transparent 75%);
+  pointer-events: none;
+}
+
 /* Mobile + tablet: visual accents and effects */
 @media (max-width: 1023px) {
-  #hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 30% 50%, rgba(200, 255, 0, 0.08) 0%, transparent 50%);
-    animation: mobile-glow 6s ease-in-out infinite alternate;
-    pointer-events: none;
-  }
-
-  @keyframes mobile-glow {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(10%, -10%) scale(1.1); }
-  }
-
   /* Higher text contrast on mobile */
   body {
     --color-text-secondary: #b0b8c8 !important;
@@ -372,6 +387,25 @@ body.cursor-hover .cursor-ring {
   width: 0px;
 }
 
+/* ===== NOISE / GRAIN TEXTURE ===== */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ===== SECTION GRADIENT (dark-soft + accent glow) ===== */
+.section-gradient {
+  background:
+    radial-gradient(ellipse 55% 55% at 85% 15%, rgba(200, 255, 0, 0.03) 0%, transparent 55%),
+    var(--color-dark-soft);
+}
+
 /* ===== TOUCH DEVICES: disable everything heavy ===== */
 @media (pointer: coarse) {
   body { cursor: auto; }
@@ -384,5 +418,6 @@ body.cursor-hover .cursor-ring {
   .magnetic-btn { transition: none; }
   .horizontal-scroll-track { will-change: auto; }
   ::-webkit-scrollbar { width: auto; }
+  .noise-overlay { display: none; }
 }
 body::after { content: ""; display: none; }
