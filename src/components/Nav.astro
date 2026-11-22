@@ -68,21 +68,4 @@ const links = [
     a.addEventListener('click', () => menu?.classList.add('hidden'));
   });
 
-  // Scroll-based background
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    const update = () => {
-      if (window.scrollY > 60) {
-        navbar.style.background = 'rgba(10,10,10,0.88)';
-        navbar.style.backdropFilter = 'blur(16px)';
-        navbar.style.borderBottom = '1px solid rgba(37,37,37,0.6)';
-      } else {
-        navbar.style.background = '';
-        navbar.style.backdropFilter = '';
-        navbar.style.borderBottom = '';
-      }
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    update();
-  }
 </script>
