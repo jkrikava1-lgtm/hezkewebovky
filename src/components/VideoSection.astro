@@ -98,14 +98,14 @@
             <span class="text-xs text-white/80">Jak tvořím weby</span>
           </div>
 
-          <!-- Video: Pixabay free license, self-hosted -->
+          <!-- Video: autoplay muted on scroll into view -->
           <video
             id="video-player"
-            class="absolute inset-0 w-full h-full object-cover hidden"
-            preload="metadata"
+            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700"
+            preload="auto"
             playsinline
-            controls
-            poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80&auto=format&fit=crop"
+            muted
+            loop
           >
             <source src="/videos/web-coding.mp4" type="video/mp4" />
           </video>
@@ -119,14 +119,23 @@
 <script>
   const card = document.getElementById('video-card');
   const player = document.getElementById('video-player') as HTMLVideoElement | null;
+  if (!card || !player) throw new Error();
 
-  card?.addEventListener('click', () => {
-    if (!player) return;
-    // Hide all overlay children, show video
-    Array.from(card.children).forEach((el) => {
-      if (el !== player) (el as HTMLElement).style.display = 'none';
+  const overlays = Array.from(card.children).filter(el => el !== player) as HTMLElement[];
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        player.play().then(() => {
+          // Fade in video, fade out overlays
+          player.style.opacity = '1';
+          overlays.forEach(el => { el.style.opacity = '0'; el.style.pointerEvents = 'none'; });
+        }).catch(() => {});
+      } else {
+        player.pause();
+      }
     });
-    player.classList.remove('hidden');
-    player.play().catch(() => {});
-  });
+  }, { threshold: 0.4 });
+
+  observer.observe(card);
 </script>
