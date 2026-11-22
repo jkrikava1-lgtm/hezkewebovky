@@ -1,0 +1,114 @@
+---
+---
+
+<section class="pb-16 md:pb-24 overflow-hidden relative" id="ukazka">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+
+    <!-- Label -->
+    <div class="text-center mb-10 reveal">
+      <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
+        <div class="w-6 h-px bg-accent/40"></div>
+        Funguje skvěle na všech zařízeních
+        <div class="w-6 h-px bg-accent/40"></div>
+      </div>
+    </div>
+
+    <!-- Device mockup area -->
+    <div class="relative max-w-4xl mx-auto reveal">
+
+      <!-- Glow behind -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-2/3 rounded-full blur-3xl pointer-events-none"
+        style="background: radial-gradient(ellipse, rgba(200,255,0,0.05) 0%, transparent 70%)"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Browser frame -->
+      <div
+        class="relative z-10 rounded-xl md:rounded-2xl overflow-hidden border shadow-2xl shadow-black/80"
+        style="border-color: rgba(255,255,255,0.08); transform: perspective(1200px) rotateX(3deg);"
+      >
+        <!-- Chrome top bar -->
+        <div class="flex items-center gap-3 px-4 py-2.5 border-b" style="background:#1c1c1c; border-color: rgba(255,255,255,0.05);">
+          <div class="flex items-center gap-1.5 shrink-0">
+            <div class="w-3 h-3 rounded-full" style="background:#ff5f57"></div>
+            <div class="w-3 h-3 rounded-full" style="background:#febc2e"></div>
+            <div class="w-3 h-3 rounded-full" style="background:#28c840"></div>
+          </div>
+          <div class="flex-1 max-w-[240px] mx-auto flex items-center gap-2 px-3 py-1 rounded-md border" style="background:rgba(0,0,0,0.4); border-color:rgba(255,255,255,0.06);">
+            <svg class="w-2.5 h-2.5 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+            <span class="text-[10px] text-text-muted font-mono tracking-tight">vaskliweb.cz</span>
+          </div>
+          <div class="hidden md:flex items-center gap-1.5 ml-auto">
+            <div class="w-16 h-4 rounded text-[9px] flex items-center justify-center" style="background:rgba(255,255,255,0.06); color:rgba(255,255,255,0.3)">Blog</div>
+            <div class="w-5 h-5 rounded flex items-center justify-center" style="background:rgba(255,255,255,0.06)">
+              <svg class="w-3 h-3" style="color:rgba(255,255,255,0.3)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screenshot -->
+        <div class="relative overflow-hidden" style="aspect-ratio: 16/8;">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop&crop=top"
+            alt="Ukázka profesionálního webového designu"
+            class="w-full h-full object-cover object-top"
+            loading="lazy"
+          />
+          <!-- Gradient fade to dark -->
+          <div
+            class="absolute inset-0"
+            style="background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.7) 100%)"
+          ></div>
+          <!-- Accent glow overlay -->
+          <div
+            class="absolute inset-0"
+            style="background: radial-gradient(ellipse 50% 80% at 65% 20%, rgba(200,255,0,0.05) 0%, transparent 60%)"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Phone mockup — overlapping bottom-right -->
+      <div
+        class="hidden md:flex absolute -bottom-10 -right-3 z-20 flex-col rounded-[18px] overflow-hidden shadow-2xl shadow-black/80"
+        style="width: 88px; border: 1px solid rgba(255,255,255,0.1); transform: perspective(900px) rotateY(-12deg) rotateX(-3deg);"
+      >
+        <!-- Notch -->
+        <div class="flex justify-center py-1.5 border-b" style="background:#1c1c1c; border-color:rgba(255,255,255,0.05);">
+          <div class="w-10 h-1 rounded-full" style="background:rgba(255,255,255,0.1)"></div>
+        </div>
+        <!-- Screen -->
+        <div class="overflow-hidden" style="aspect-ratio: 9/19.5; background:#0a0a0a;">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=250&q=80&auto=format&fit=crop&crop=left"
+            alt="Mobilní verze webu"
+            class="w-full h-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <!-- Home bar -->
+        <div class="flex justify-center py-1 border-t" style="background:#1c1c1c; border-color:rgba(255,255,255,0.05);">
+          <div class="w-7 h-0.5 rounded-full" style="background:rgba(255,255,255,0.15)"></div>
+        </div>
+      </div>
+
+      <!-- Floating badge -->
+      <div class="hidden md:flex absolute -bottom-5 left-10 z-20 items-center gap-2 px-4 py-2 rounded-full border border-dark-border bg-dark-card/90 shadow-lg" style="backdrop-filter: blur(8px);">
+        <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
+        <span class="text-xs text-text-secondary font-medium">Responzivní na mobilu i tabletu</span>
+      </div>
+    </div>
+
+    <!-- Bottom link -->
+    <div class="mt-20 text-center reveal">
+      <a href="#ukazky" class="text-text-muted text-sm hover:text-accent transition-colors duration-300 underline underline-offset-4 decoration-dark-border hover:decoration-accent" data-hover>
+        Prohlédnout ukázky projektů
+      </a>
+    </div>
+
+  </div>
+</section>
