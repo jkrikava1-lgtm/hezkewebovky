@@ -98,16 +98,16 @@
             <span class="text-xs text-white/80">Jak tvořím weby</span>
           </div>
 
-          <!-- Video: free Pixabay license -->
+          <!-- Video: Pixabay free license, self-hosted -->
           <video
             id="video-player"
             class="absolute inset-0 w-full h-full object-cover hidden"
-            preload="none"
+            preload="metadata"
             playsinline
             controls
             poster="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80&auto=format&fit=crop"
           >
-            <source src="https://cdn.pixabay.com/video/2015/10/16/1007-142621179_large.mp4" type="video/mp4" />
+            <source src="/videos/coding.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -119,19 +119,14 @@
 <script>
   const card = document.getElementById('video-card');
   const player = document.getElementById('video-player') as HTMLVideoElement | null;
-  const poster = document.getElementById('video-poster');
-  const playBtn = document.getElementById('play-btn');
 
   card?.addEventListener('click', () => {
     if (!player) return;
-    const hasSrc = player.querySelector('source') || player.src;
-    if (hasSrc) {
-      poster?.classList.add('hidden');
-      playBtn?.parentElement?.classList.add('hidden');
-      card.querySelector('.absolute.inset-0.bg-dark\\/35')?.classList.add('hidden');
-      card.querySelector('.absolute.bottom-4')?.classList.add('hidden');
-      player.classList.remove('hidden');
-      player.play();
-    }
+    // Hide all overlay children, show video
+    Array.from(card.children).forEach((el) => {
+      if (el !== player) (el as HTMLElement).style.display = 'none';
+    });
+    player.classList.remove('hidden');
+    player.play().catch(() => {});
   });
 </script>
