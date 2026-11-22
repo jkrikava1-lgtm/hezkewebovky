@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Tvorba webových stránek na míru | od 9 900 Kč | Hezké webovky';
+const description = 'Profesionální tvorba webových stránek, e-shopů a redesignů. Web na míru od 9 900 Kč, hotovo do 3 týdnů. SEO od prvního dne. Bez měsíčních poplatků.';
+
+const services = [
+  {
+    id: 'tvorba-webu',
+    num: '01',
+    title: 'Tvorba webu na míru',
+    headline: 'Web, který odpovídá vaší firmě — ne šabloně.',
+    description: 'Každý web tvořím od nuly podle vašich potřeb. Žádné šablony, žádné kompromisy. Výsledkem je rychlý, moderní web s čistým designem, který budí důvěru a přivádí zákazníky.',
+    details: [
+      'Individuální design přizpůsobený vaší značce',
+      'Plně responzivní — skvěle vypadá na mobilu i desktopu',
+      'Rychlé načítání (Core Web Vitals)',
+      'Základní SEO optimalizace v ceně',
+      'Správa obsahu přes Sanity CMS (nemusíte umět programovat)',
+      'Nasazení a spuštění na vlastní doméně',
+    ],
+    price: 'od 9 900 Kč',
+    time: 'do 3 týdnů',
+    tags: ['Firemní web', 'Vizitka', 'Landing page'],
+  },
+  {
+    id: 'eshop',
+    num: '02',
+    title: 'E-shop',
+    headline: 'Prodávejte online bez komplikací.',
+    description: 'Menší e-shop s přehledným designem, který zákazníci rádi používají. Zaměřuji se na jednoduché řešení s rychlým načítáním a snadnou správou produktů — bez zbytečných funkcí, které nepoužijete.',
+    details: [
+      'Přehledný produktový katalog',
+      'Košík, objednávky, platby',
+      'Správa produktů bez nutnosti programování',
+      'Napojení na dopravce a platební brány',
+      'SEO pro e-commerce',
+      'Mobilní verze v ceně',
+    ],
+    price: 'od 19 900 Kč',
+    time: 'do 5 týdnů',
+    tags: ['E-shop', 'Online prodej', 'Produktový katalog'],
+  },
+  {
+    id: 'redesign',
+    num: '03',
+    title: 'Redesign webu',
+    headline: 'Starý web brzdí vaše podnikání. Pojďme ho změnit.',
+    description: 'Máte web, který vypadá jako z roku 2010? Nebo jeden, který nefunguje na mobilu? Přijdu, podívám se na to, co nefunguje, a navrhnu nové řešení — rychlejší, modernější a s lepším výsledkem.',
+    details: [
+      'Analýza stávajícího webu (co nefunguje)',
+      'Nový moderní design',
+      'Zachování obsahu a SEO hodnoty',
+      'Migraci dat obstará Claude — rychle a bezchybně',
+      'Testování před spuštěním',
+      'Podpora po přechodu',
+    ],
+    price: 'od 7 900 Kč',
+    time: 'do 4 týdnů',
+    tags: ['Modernizace', 'Nový design', 'Migrace'],
+  },
+  {
+    id: 'seo',
+    num: '04',
+    title: 'SEO & Lokální viditelnost',
+    headline: 'Zákazníci vás musí najít na Googlu dříve než konkurenci.',
+    description: 'Technické SEO nastavím správně hned od začátku — strukturu URL, rychlost, meta tagy, schema markup. Pro lokální firmy se zaměřím na Google Moje firma a hledání "v okolí mě".',
+    details: [
+      'Technické SEO (rychlost, struktura, meta tagy)',
+      'Schema markup (JSON-LD) pro vyhledávače a AI',
+      'Google Moje firma — nastavení a optimalizace',
+      'Lokální klíčová slova pro vaší oblast',
+      'Sitemap a robots.txt',
+      'Kontrola indexace v Google Search Console',
+    ],
+    price: 'od 3 900 Kč',
+    time: 'do 1 týdne',
+    tags: ['Google', 'Lokální SEO', 'Schema markup'],
+  },
+];
+---
+
+<Layout {title} {description} noLoader>
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 60% 50% at 30% 40%, rgba(200,255,0,0.08) 0%, transparent 60%)">
+      </div>
+      <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        <!-- Breadcrumb -->
+        <nav class="text-xs text-text-muted mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Hezké webovky</a>
+          <span>/</span>
+          <span class="text-white/50">Služby</span>
+        </nav>
+
+        <div class="max-w-3xl">
+          <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Co pro vás udělám</div>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+            Tvorba webových<br/>
+            <span class="text-accent">stránek na míru</span>
+          </h1>
+          <p class="text-text-secondary text-xl leading-relaxed max-w-2xl mb-10">
+            Profesionální web pro vaši firmu nebo živnost. Tvořím rychlé, moderní weby s čistým designem — bez šablon, bez agenturních cen, bez měsíčních poplatků.
+          </p>
+          <div class="flex flex-wrap gap-4 items-center">
+            <a href="#kontakt" class="inline-flex items-center gap-3 px-7 py-4 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+              Nezávazná konzultace zdarma
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </a>
+            <div class="flex items-center gap-2 text-sm text-text-muted">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Odpovím do 24 hodin
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    {services.map((s, i) => (
+      <section id={s.id} class={`py-20 md:py-28 ${i % 2 === 1 ? 'section-gradient' : ''}`}>
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+            <!-- Left: content -->
+            <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+              <div class="text-accent font-mono text-xs mb-4">{s.num}</div>
+              <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4">{s.title}</h2>
+              <p class="text-text-muted text-base italic mb-6">{s.headline}</p>
+              <p class="text-text-secondary text-lg leading-relaxed mb-8">{s.description}</p>
+              <div class="flex flex-wrap gap-2 mb-8">
+                {s.tags.map(tag => (
+                  <span class="px-3 py-1 rounded-full border border-dark-border text-xs text-text-muted">{tag}</span>
+                ))}
+              </div>
+              <div class="flex items-center gap-6">
+                <div>
+                  <div class="text-accent font-bold text-xl">{s.price}</div>
+                  <div class="text-text-muted text-xs mt-0.5">jednorázová platba</div>
+                </div>
+                <div class="w-px h-10 bg-dark-border"></div>
+                <div>
+                  <div class="text-white font-semibold text-sm">{s.time}</div>
+                  <div class="text-text-muted text-xs mt-0.5">hotovo</div>
+                </div>
+                <a href="/#kontakt" class="ml-auto inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-black rounded-full text-xs font-bold tracking-wider uppercase hover:bg-white transition-all duration-500">
+                  Poptat
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: detail list -->
+            <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+              <div class="border border-dark-border rounded-2xl p-6 md:p-8 bg-dark-card/40">
+                <div class="text-xs text-text-muted tracking-widest uppercase mb-5">Co je v ceně</div>
+                <ul class="space-y-3.5">
+                  {s.details.map(d => (
+                    <li class="flex items-start gap-3">
+                      <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                           style="background:rgba(200,255,0,0.1); border:1px solid rgba(200,255,0,0.2);">
+                        <svg class="w-2.5 h-2.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                        </svg>
+                      </div>
+                      <span class="text-text-secondary text-sm leading-relaxed">{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Bottom CTA -->
+    <section class="py-24 md:py-32 section-gradient" id="kontakt">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8 text-center">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Nezávazná konzultace</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          Nevíte, co přesně<br/><span class="text-accent">potřebujete?</span>
+        </h2>
+        <p class="text-text-secondary text-lg max-w-xl mx-auto mb-10">
+          Napište mi o vašem projektu a já vám poradím, jaké řešení bude pro vás nejlepší. Konzultace je zdarma a nezávazná.
+        </p>
+        <a href="mailto:info@hezkewebovky.cz" class="inline-flex items-center gap-3 px-8 py-5 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+          Napsat na info@hezkewebovky.cz
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Structured Data: Service page -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Webové služby | Hezké webovky",
+  "itemListElement": services.map((s, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Service",
+      "name": s.title,
+      "description": s.description,
+      "provider": { "@type": "LocalBusiness", "name": "Hezké webovky", "url": "https://hezkewebovky.cz" },
+      "areaServed": { "@type": "Country", "name": "Česká republika" },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "CZK",
+        "description": s.price
+      }
+    }
+  }))
+})} />
+</script>
+
+<!-- Breadcrumb schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Hezké webovky", "item": "https://hezkewebovky.cz" },
+    { "@type": "ListItem", "position": 2, "name": "Služby", "item": "https://hezkewebovky.cz/sluzby" }
+  ]
+})} />
+</script>

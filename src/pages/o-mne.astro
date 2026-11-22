@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'O mně — Jakub Křikava | Tvůrce webů | Hezké webovky';
+const description = 'Jsem Jakub Křikava — tvůrce webových stránek na volné noze. Pomáhám firmám, živnostníkům a řemeslníkům s profesionálními weby od 9 900 Kč.';
+
+const values = [
+  {
+    title: 'Osobní přístup',
+    desc: 'Nejste číslo v CRM. Vždy víte, s kým mluvíte — a kdo za vaším webem stojí. Komunikujeme přímo, bez prostředníků.',
+  },
+  {
+    title: 'Férové ceny',
+    desc: 'Platíte jednorázově za hotový web. Žádné měsíční "licence", žádné skryté poplatky za "přidání textu". Cenu dohodnem předem.',
+  },
+  {
+    title: 'Rychlé načítání',
+    desc: 'Weby stavím na moderní technologii Astro — výsledkem jsou extrémně rychlé stránky, které Google miluje. Žádné těžké šablony.',
+  },
+  {
+    title: 'Obsah máte pod kontrolou',
+    desc: 'Každý web napojím na redakční systém Sanity. Texty, fotky a ceny měníte sami — bez programátora.',
+  },
+];
+
+const stack = [
+  { name: 'Astro', desc: 'Framework' },
+  { name: 'Tailwind', desc: 'CSS' },
+  { name: 'Sanity', desc: 'CMS' },
+  { name: 'Vercel', desc: 'Hosting' },
+  { name: 'TypeScript', desc: 'Jazyk' },
+  { name: 'Figma', desc: 'Design' },
+];
+---
+
+<Layout {title} {description} noLoader>
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 55% 55% at 70% 40%, rgba(200,255,0,0.07) 0%, transparent 60%)">
+      </div>
+      <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        <!-- Breadcrumb -->
+        <nav class="text-xs text-text-muted mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Hezké webovky</a>
+          <span>/</span>
+          <span class="text-white/50">O mně</span>
+        </nav>
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <!-- Left -->
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Tvůrce webů</div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+              Jsem Jakub<br/>
+              <span class="text-accent">Křikava.</span>
+            </h1>
+            <p class="text-text-secondary text-xl leading-relaxed mb-8">
+              Tvořím profesionální webové stránky pro firmy, živnostníky a řemeslníky po celé České republice. Pracuji na volné noze — každý projekt dostane moji plnou pozornost.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/#kontakt" class="inline-flex items-center gap-3 px-7 py-4 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+                Napsat zprávu
+              </a>
+              <a href="/sluzby" class="inline-flex items-center gap-3 px-7 py-4 border border-dark-border rounded-full text-sm text-text-secondary hover:text-white hover:border-white/30 transition-all duration-500">
+                Moje služby
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: JK card -->
+          <div class="flex justify-start lg:justify-end">
+            <div class="w-full max-w-sm border border-dark-border rounded-3xl p-8 bg-dark-card">
+              <div class="flex items-center gap-4 mb-7">
+                <div class="w-20 h-20 rounded-full flex items-center justify-center shrink-0 border"
+                     style="background:rgba(200,255,0,0.08); border-color:rgba(200,255,0,0.25);">
+                  <span class="text-accent font-bold text-2xl">JK</span>
+                </div>
+                <div>
+                  <h2 class="text-white font-bold text-xl leading-tight">Jakub Křikava</h2>
+                  <p class="text-text-muted text-sm mt-1">Tvůrce webů · Hezké webovky</p>
+                  <p class="text-text-muted text-xs mt-0.5">Česká republika</p>
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 border-t border-dark-border pt-6 mb-6">
+                <div class="text-center">
+                  <div class="text-accent font-bold text-2xl leading-none mb-1">15+</div>
+                  <div class="text-text-muted text-xs">projektů</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-white font-bold text-2xl leading-none mb-1">3 r.</div>
+                  <div class="text-text-muted text-xs">praxe</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-white font-bold text-2xl leading-none mb-1">24h</div>
+                  <div class="text-text-muted text-xs">odezva</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2.5 py-3 px-4 rounded-xl border border-dark-border" style="background:rgba(255,255,255,0.03);">
+                <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
+                <span class="text-text-secondary text-sm">Přijímám nové projekty</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="py-20 md:py-28 section-gradient">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="max-w-3xl">
+          <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Můj příběh</div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8">
+            Proč dělám <span class="text-accent">weby pro malé firmy</span>
+          </h2>
+          <div class="space-y-5 text-text-secondary text-lg leading-relaxed">
+            <p>
+              Všiml jsem si jedné věci: spousta schopných živnostníků a malých firem má zastaralý nebo žádný web — a přichází tak o zákazníky, kteří je hledají online. Přitom kvalitní web nemusí stát desítky tisíc ani trvat měsíce.
+            </p>
+            <p>
+              Proto jsem se rozhodl specializovat na rychlé, moderní weby za férové ceny. Vím, jak web pro elektrikáře nebo kosmetičku přimět k tomu, aby fungoval — přiváděl zákazníky z Googlu, budoval důvěru a odpovídal na otázky dřív, než zákazník zavolá.
+            </p>
+            <p>
+              Každý web stavím na technologii Astro — výsledkem jsou extrémně rychlé stránky (skóre 90+ v Google PageSpeed), které Google indexuje rád. K tomu přidávám Sanity CMS, aby klient mohl obsah měnit sám, bez závislosti na programátorovi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20 md:py-28">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Jak pracuji</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
+          Co dostanete <span class="text-accent">navíc</span>
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v, i) => (
+            <div class="border border-dark-border rounded-2xl p-6 bg-dark-card/40 hover:border-accent/20 transition-colors duration-500">
+              <div class="text-accent font-mono text-xs mb-4">0{i + 1}</div>
+              <h3 class="text-white font-bold text-lg mb-3">{v.title}</h3>
+              <p class="text-text-secondary text-sm leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="py-16 md:py-20 section-gradient">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">
+          <div class="shrink-0">
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Technologie</div>
+            <h2 class="text-2xl font-bold">Čím stavím weby</h2>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            {stack.map(t => (
+              <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-dark-border bg-dark-card/60">
+                <span class="text-white font-semibold text-sm">{t.name}</span>
+                <span class="text-text-muted text-xs">{t.desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-32">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          Pojďme si <span class="text-accent">promluvit</span>
+        </h2>
+        <p class="text-text-secondary text-lg max-w-xl mx-auto mb-10">
+          Napište mi o vašem projektu — do 24 hodin se ozvu a domluvíme se na dalším postupu. Konzultace je zdarma a nezávazná.
+        </p>
+        <a href="mailto:info@hezkewebovky.cz" class="inline-flex items-center gap-3 px-8 py-5 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+          info@hezkewebovky.cz
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Structured Data: Person page -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jakub Křikava",
+  "jobTitle": "Tvůrce webových stránek",
+  "url": "https://hezkewebovky.cz/o-mne",
+  "email": "info@hezkewebovky.cz",
+  "telephone": "+420777724573",
+  "areaServed": { "@type": "Country", "name": "Česká republika" },
+  "knowsAbout": ["webdesign", "tvorba webových stránek", "SEO", "Astro", "Tailwind CSS", "Sanity CMS", "Vercel"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Hezké webovky",
+    "url": "https://hezkewebovky.cz"
+  },
+  "sameAs": [
+    "https://www.facebook.com/hezkewebovky",
+    "https://www.instagram.com/hezkewebovky"
+  ]
+})} />
+</script>
+
+<!-- Breadcrumb schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Hezké webovky", "item": "https://hezkewebovky.cz" },
+    { "@type": "ListItem", "position": 2, "name": "O mně", "item": "https://hezkewebovky.cz/o-mne" }
+  ]
+})} />
+</script>

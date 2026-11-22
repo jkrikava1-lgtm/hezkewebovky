@@ -10,6 +10,7 @@ interface Props {
 const { title, description = 'Tvorba webových stránek pro firmy, živnostníky a řemeslníky. Profesionální web na míru od 9 900 Kč, hotovo do 3 týdnů. Žádné měsíční poplatky, žádné šablony.', noLoader = false } = Astro.props;
 const siteUrl = 'https://hezkewebovky.cz';
 const ogImage = `${siteUrl}/og-image-v2.png`;
+const canonicalUrl = Astro.url.href;
 ---
 
 <!doctype html>
@@ -48,13 +49,13 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
     <meta name="robots" content="index, follow" />
     <meta name="seznam-wmt" content="DjOnAjo8ks1uVCH3UahjOEJcLJfp8gdU" />
     <meta name="seznam-wmt" content="QJQXL1hY4eL54snsMbWlXMaLk7ClN3gw" />
-    <link rel="canonical" href={siteUrl} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -100,6 +101,43 @@ const ogImage = `${siteUrl}/og-image-v2.png`;
         "https://www.facebook.com/hezkewebovky",
         "https://www.instagram.com/hezkewebovky"
       ]
+    })} />
+    </script>
+
+    <!-- Structured Data: Person -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jakub Křikava",
+      "jobTitle": "Tvůrce webových stránek",
+      "url": siteUrl,
+      "email": "info@hezkewebovky.cz",
+      "telephone": "+420777724573",
+      "knowsAbout": ["webdesign", "tvorba webových stránek", "SEO optimalizace", "Astro", "Tailwind CSS", "Sanity CMS"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Hezké webovky",
+        "url": siteUrl
+      },
+      "sameAs": [
+        "https://www.facebook.com/hezkewebovky",
+        "https://www.instagram.com/hezkewebovky"
+      ]
+    })} />
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Hezké webovky",
+      "url": siteUrl,
+      "description": "Tvorba profesionálních webových stránek pro firmy, živnostníky a řemeslníky. Od 9 900 Kč, hotovo do 3 týdnů.",
+      "inLanguage": "cs-CZ",
+      "publisher": {
+        "@type": "Person",
+        "name": "Jakub Křikava"
+      }
     })} />
     </script>
 
