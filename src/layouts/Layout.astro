@@ -68,7 +68,7 @@ const canonicalUrl = Astro.url.href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Fonts — non-blocking -->
+    <!-- Fonts – non-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Nunito:wght@300;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -146,9 +146,9 @@ const canonicalUrl = Astro.url.href;
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Kolik stojí vytvoření webových stránek?", "acceptedAnswer": { "@type": "Answer", "text": "Cena za kompletní web začíná na 9 900 Kč. V ceně je návrh designu, programování, základní SEO optimalizace a nasazení. Přesnou cenu vždy dohodnu předem — žádné skryté poplatky." } },
+        { "@type": "Question", "name": "Kolik stojí vytvoření webových stránek?", "acceptedAnswer": { "@type": "Answer", "text": "Cena za kompletní web začíná na 9 900 Kč. V ceně je návrh designu, programování, základní SEO optimalizace a nasazení. Přesnou cenu vždy dohodnu předem – žádné skryté poplatky." } },
         { "@type": "Question", "name": "Jak dlouho trvá vytvoření webu?", "acceptedAnswer": { "@type": "Answer", "text": "Standardní web hotový do 3 týdnů od schválení návrhu. Termín vždy dohodnu předem." } },
-        { "@type": "Question", "name": "Pro koho weby tvořím?", "acceptedAnswer": { "@type": "Answer", "text": "Primárně pro živnostníky, řemeslníky a malé firmy, které potřebují profesionální web bez agenturnich cen — elektrikáři, instalatéři, restaurace, kosmetičky nebo e-shopy." } },
+        { "@type": "Question", "name": "Pro koho weby tvořím?", "acceptedAnswer": { "@type": "Answer", "text": "Primárně pro živnostníky, řemeslníky a malé firmy, které potřebují profesionální web bez agenturnich cen – elektrikáři, instalatéři, restaurace, kosmetičky nebo e-shopy." } },
         { "@type": "Question", "name": "Co je součástí ceny webu?", "acceptedAnswer": { "@type": "Answer", "text": "Návrh a programování webu na míru, mobilní verze (responzivní design), základní SEO optimalizace, nasazení na server, zaškolení a podpora po spuštění." } },
         { "@type": "Question", "name": "Musím platit měsíční poplatky za web?", "acceptedAnswer": { "@type": "Answer", "text": "Ne. Platíte jednorázově za hotový web. Jediné pravidelné náklady jsou doména (cca 200 Kč/rok) a hosting (cca 500–1000 Kč/rok)." } },
         { "@type": "Question", "name": "Dělám e-shopy?", "acceptedAnswer": { "@type": "Answer", "text": "Ano, menší e-shopy dělám. Pro větší projekty s tisíci produktů doporučím vhodné řešení a pomohu s nastavením." } }
@@ -157,7 +157,7 @@ const canonicalUrl = Astro.url.href;
     </script>
   </head>
   <body class="antialiased">
-    <!-- Cookie consent banner — centered modal -->
+    <!-- Cookie consent banner – centered modal -->
     <div id="cookie-banner" class="fixed inset-0 z-[9999] hidden">
       <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-sm bg-dark-card border border-dark-border rounded-2xl shadow-2xl p-7">
@@ -199,7 +199,7 @@ const canonicalUrl = Astro.url.href;
           <div class="flex items-start justify-between gap-4 py-3">
             <div class="flex-1">
               <p class="text-sm font-semibold text-white/80">Analytické <span class="text-xs text-accent font-normal ml-1">(doporučeno)</span></p>
-              <p class="text-xs text-text-secondary mt-0.5">Google Analytics — pomáhají nám zlepšovat web.</p>
+              <p class="text-xs text-text-secondary mt-0.5">Google Analytics – pomáhají nám zlepšovat web.</p>
               <p id="analytics-warning" class="hidden text-xs text-amber-400/80 mt-1.5">Bez analytiky nemůžeme sledovat, co vám chybí, a web zlepšovat pro vás.</p>
             </div>
             <button id="toggle-analytics" role="switch" aria-checked="true"
@@ -304,7 +304,7 @@ const canonicalUrl = Astro.url.href;
       })();
     </script>
 
-    <!-- Loading screen — desktop only via JS -->
+    <!-- Loading screen – desktop only via JS -->
     {!noLoader && (
       <div class="loader hidden" id="loader">
         <div class="loader-counter" id="loader-counter"></div>
@@ -314,17 +314,17 @@ const canonicalUrl = Astro.url.href;
     <!-- Noise/grain texture overlay -->
     <div class="noise-overlay" aria-hidden="true"></div>
 
-    <!-- Custom cursor — desktop only, hidden via CSS on touch -->
+    <!-- Custom cursor – desktop only, hidden via CSS on touch -->
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
 
     <slot />
 
-    <!-- ALL JS EFFECTS — desktop only -->
+    <!-- ALL JS EFFECTS – desktop only -->
     <script>
       const isDesktop = window.matchMedia('(pointer: fine)').matches;
 
-      // === RANDOM GREEN WORD IN HEADINGS — mobile/tablet ===
+      // === RANDOM GREEN WORD IN HEADINGS – mobile/tablet ===
       if (!isDesktop) {
         document.querySelectorAll('#sluzby h2, #cena h2, #ukazky h2, #jaknato h2, #kontakt h2').forEach((h2) => {
           const words = h2.textContent?.trim().split(/\s+/) || [];
@@ -356,7 +356,7 @@ const canonicalUrl = Astro.url.href;
         }
       }
 
-      // === LENIS SMOOTH SCROLL — desktop only ===
+      // === LENIS SMOOTH SCROLL – desktop only ===
       if (isDesktop) {
         import('lenis').then(({ default: Lenis }) => {
           const lenis = new Lenis({
@@ -371,7 +371,7 @@ const canonicalUrl = Astro.url.href;
         });
       }
 
-      // === CUSTOM CURSOR — desktop only ===
+      // === CUSTOM CURSOR – desktop only ===
       if (isDesktop) {
         const dot = document.getElementById('cursor-dot') as HTMLElement;
         const ring = document.getElementById('cursor-ring') as HTMLElement;
@@ -398,7 +398,7 @@ const canonicalUrl = Astro.url.href;
         });
       }
 
-      // === SCROLL REVEAL — desktop only ===
+      // === SCROLL REVEAL – desktop only ===
       if (isDesktop) {
         const observer = new IntersectionObserver(
           (entries) => {
@@ -411,7 +411,7 @@ const canonicalUrl = Astro.url.href;
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
       }
 
-      // === PARALLAX on section headings — desktop only ===
+      // === PARALLAX on section headings – desktop only ===
       if (isDesktop) {
         const parallaxHeadings = document.querySelectorAll('h2');
         window.addEventListener('scroll', () => {
@@ -424,7 +424,7 @@ const canonicalUrl = Astro.url.href;
         });
       }
 
-      // === MAGNETIC BUTTONS — desktop only ===
+      // === MAGNETIC BUTTONS – desktop only ===
       if (isDesktop) {
         document.querySelectorAll('.magnetic-btn').forEach((btn) => {
           btn.addEventListener('mousemove', (e) => {

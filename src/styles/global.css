@@ -119,7 +119,7 @@ body.cursor-hover .cursor-ring {
   color: var(--color-accent);
 }
 
-/* ===== H1 GLITCH EFFECT — desktop only ===== */
+/* ===== H1 GLITCH EFFECT – desktop only ===== */
 @media (pointer: fine) {
   .glitch {
     position: relative;
@@ -263,12 +263,12 @@ body.cursor-hover .cursor-ring {
     --color-text-muted: #8891a3 !important;
   }
 
-  /* Green accent word in headings — set by JS */
+  /* Green accent word in headings – set by JS */
   .accent-word {
     color: #c8ff00;
   }
 
-  /* Service cards — centered short green left accent */
+  /* Service cards – centered short green left accent */
   .service-card {
     position: relative;
     padding-left: 1rem;
