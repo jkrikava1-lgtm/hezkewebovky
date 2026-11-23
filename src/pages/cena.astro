@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/pricing.json';
+
+const title = 'Ceník tvorby webových stránek | od 9 900 Kč | Hezké webovky';
+const description = 'Přehledný ceník webových stránek. Web na míru od 9 900 Kč, redesign od 7 900 Kč, SEO od 3 900 Kč. Jednorázová platba, žádné měsíční poplatky.';
+
+const packages = [
+  {
+    id: 'tvorba-webu',
+    title: 'Web na míru',
+    price: 'od 9 900 Kč',
+    time: 'do 3 týdnů',
+    highlight: true,
+    includes: [
+      'Originální design přizpůsobený vaší značce',
+      'Plně responzivní – mobil i desktop',
+      'Rychlé načítání (Core Web Vitals)',
+      'Základní SEO optimalizace',
+      'Správa obsahu přes Sanity CMS',
+      'Nasazení na vlastní doménu',
+    ],
+  },
+  {
+    id: 'redesign',
+    title: 'Redesign webu',
+    price: 'od 7 900 Kč',
+    time: 'do 4 týdnů',
+    highlight: false,
+    includes: [
+      'Analýza stávajícího webu',
+      'Nový moderní design',
+      'Zachování SEO hodnoty',
+      'Migrace obsahu',
+      'Testování před spuštěním',
+      'Podpora po přechodu',
+    ],
+  },
+  {
+    id: 'seo',
+    title: 'SEO & Viditelnost',
+    price: 'od 3 900 Kč',
+    time: 'do 1 týdne',
+    highlight: false,
+    includes: [
+      'Technické SEO (rychlost, struktura, meta tagy)',
+      'Schema markup (JSON-LD)',
+      'Google Moje firma',
+      'Lokální klíčová slova',
+      'Sitemap a robots.txt',
+      'Kontrola v Google Search Console',
+    ],
+  },
+];
+
+const alwaysIncluded = [
+  'Mobilní verze v každém balíčku',
+  'SSL certifikát (https://)',
+  'Základní bezpečnostní nastavení',
+  'Zaškolení jak web sám upravovat',
+  'Podpora po spuštění (30 dní)',
+  'Žádné měsíční poplatky od nás',
+];
+---
+
+<Layout {title} {description} noLoader>
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 55% 50% at 30% 40%, rgba(200,255,0,0.08) 0%, transparent 60%)">
+      </div>
+      <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        <nav class="text-xs text-text-muted mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Hezké webovky</a>
+          <span>/</span>
+          <span class="text-white/50">Ceník</span>
+        </nav>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Ceník</div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+              {data.heading}<br/>
+              <span class="text-accent">{data.heading_accent}</span>
+            </h1>
+            <p class="text-text-secondary text-xl leading-relaxed mb-10">
+              {data.subtext}
+            </p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <a href="/#kontakt" class="inline-flex items-center gap-3 px-7 py-4 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+                Nezávazná konzultace zdarma
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Price highlight card -->
+          <div class="hidden lg:flex justify-end">
+            <div class="border border-accent/30 rounded-3xl p-8 bg-dark-card max-w-xs w-full">
+              <div class="text-text-muted text-xs tracking-widest uppercase mb-3">Nejčastější volba</div>
+              <div class="text-5xl font-bold text-accent mb-2">9 900 Kč</div>
+              <div class="text-text-secondary text-sm mb-6">za kompletní web na míru</div>
+              <div class="space-y-2.5">
+                {['Originální design', 'Rychlé načítání', 'SEO optimalizace', 'CMS správa obsahu'].map(item => (
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
+                         style="background:rgba(200,255,0,0.15); border:1px solid rgba(200,255,0,0.3);">
+                      <svg class="w-2 h-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </div>
+                    <span class="text-text-secondary text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price packages -->
+    <section class="pb-20 md:pb-28">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-3 gap-6">
+          {packages.map(pkg => (
+            <div class={`rounded-2xl border p-7 flex flex-col ${pkg.highlight ? 'border-accent/40 bg-dark-card/70' : 'border-dark-border bg-dark-card/30'}`}>
+              {pkg.highlight && (
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-semibold mb-5 self-start"
+                     style="background:rgba(200,255,0,0.12); color: #c8ff00; border: 1px solid rgba(200,255,0,0.25);">
+                  Nejoblíbenější
+                </div>
+              )}
+              <h2 class="text-xl font-bold mb-1">{pkg.title}</h2>
+              <div class="flex items-baseline gap-2 mb-1">
+                <span class={`text-3xl font-bold ${pkg.highlight ? 'text-accent' : 'text-white'}`}>{pkg.price}</span>
+              </div>
+              <div class="text-text-muted text-xs mb-6">hotovo {pkg.time}</div>
+              <ul class="space-y-2.5 flex-1 mb-8">
+                {pkg.includes.map(item => (
+                  <li class="flex items-start gap-2.5">
+                    <div class="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                         style="background:rgba(200,255,0,0.1); border:1px solid rgba(200,255,0,0.2);">
+                      <svg class="w-2 h-2 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                      </svg>
+                    </div>
+                    <span class="text-text-secondary text-sm leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`/sluzby#${pkg.id}`}
+                class={`text-center py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-500 ${pkg.highlight ? 'bg-accent text-black hover:bg-white' : 'border border-dark-border text-text-secondary hover:text-white hover:border-white/30'}`}
+              >
+                Více informací
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Always included -->
+    <section class="py-20 md:py-28 section-gradient">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Vždy v ceně</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+              Co dostanete<br/><span class="text-accent">ke každému webu</span>
+            </h2>
+            <p class="text-text-secondary text-lg leading-relaxed">
+              Bez ohledu na to, jaký balíček si vyberete, tyto věci jsou vždy součástí ceny.
+            </p>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {alwaysIncluded.map(item => (
+              <div class="flex items-center gap-3 p-4 rounded-xl border border-dark-border bg-dark-card/40">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
+                     style="background:rgba(200,255,0,0.1); border:1px solid rgba(200,255,0,0.2);">
+                  <svg class="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-text-secondary text-sm leading-tight">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reasons why -->
+    <section class="py-20 md:py-28">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Proč takové ceny</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-12">
+          Férová cena bez <span class="text-accent">kompromisů</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          {data.reasons.map(reason => (
+            <div class="border-t border-dark-border pt-6">
+              <h3 class="text-lg font-semibold mb-3">{reason.title}</h3>
+              <p class="text-text-secondary text-base leading-relaxed">{reason.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-32 section-gradient">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8 text-center">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Nezávazná konzultace</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          Nevíte, co přesně<br/><span class="text-accent">potřebujete?</span>
+        </h2>
+        <p class="text-text-secondary text-lg max-w-xl mx-auto mb-10">
+          Napište mi a já vám poradím, jaké řešení bude pro vás nejlepší. Konzultace je zdarma.
+        </p>
+        <a href="mailto:info@hezkewebovky.cz" class="inline-flex items-center gap-3 px-8 py-5 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+          Napsat na info@hezkewebovky.cz
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Hezké webovky", "item": "https://hezkewebovky.cz" },
+    { "@type": "ListItem", "position": 2, "name": "Ceník", "item": "https://hezkewebovky.cz/cena" }
+  ]
+})} /></script>
