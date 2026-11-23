@@ -9,6 +9,7 @@ const description = 'Profesionální tvorba webových stránek, e-shopů a redes
 const services = [
   {
     id: 'tvorba-webu',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&auto=format&fit=crop',
     num: '01',
     title: 'Tvorba webu na míru',
     headline: 'Web, který odpovídá vaší firmě – ne šabloně.',
@@ -27,6 +28,7 @@ const services = [
   },
   {
     id: 'eshop',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop',
     num: '02',
     title: 'E-shop',
     headline: 'Prodávejte online bez komplikací.',
@@ -45,6 +47,7 @@ const services = [
   },
   {
     id: 'redesign',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80&auto=format&fit=crop',
     num: '03',
     title: 'Redesign webu',
     headline: 'Starý web brzdí vaše podnikání. Pojďme ho změnit.',
@@ -63,6 +66,7 @@ const services = [
   },
   {
     id: 'seo',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
     num: '04',
     title: 'SEO & Lokální viditelnost',
     headline: 'Zákazníci vás musí najít na Googlu dříve než konkurenci.',
@@ -99,27 +103,41 @@ const services = [
           <span class="text-white/50">Služby</span>
         </nav>
 
-        <div class="max-w-3xl">
-          <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Co pro vás udělám</div>
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
-            Tvorba webových<br/>
-            <span class="text-accent">stránek na míru</span>
-          </h1>
-          <p class="text-text-secondary text-xl leading-relaxed max-w-2xl mb-10">
-            Profesionální web pro vaši firmu nebo živnost. Tvořím rychlé, moderní weby s čistým designem – bez šablon, bez agenturních cen, bez měsíčních poplatků.
-          </p>
-          <div class="flex flex-wrap gap-4 items-center">
-            <a href="#kontakt" class="inline-flex items-center gap-3 px-7 py-4 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
-              Nezávazná konzultace zdarma
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
-            </a>
-            <div class="flex items-center gap-2 text-sm text-text-muted">
-              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              Odpovím do 24 hodin
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-6">
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Co pro vás udělám</div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+              Tvorba webových<br/>
+              <span class="text-accent">stránek na míru</span>
+            </h1>
+            <p class="text-text-secondary text-xl leading-relaxed mb-10">
+              Profesionální web pro vaši firmu nebo živnost. Tvořím rychlé, moderní weby s čistým designem – bez šablon, bez agenturních cen, bez měsíčních poplatků.
+            </p>
+            <div class="flex flex-wrap gap-4 items-center">
+              <a href="#kontakt" class="inline-flex items-center gap-3 px-7 py-4 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+                Nezávazná konzultace zdarma
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </a>
+              <div class="flex items-center gap-2 text-sm text-text-muted">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Odpovím do 24 hodin
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: hero photo -->
+          <div class="hidden lg:block">
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/70 border border-dark-border/40">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop"
+                alt="Profesionální tvorba webových stránek na míru"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
             </div>
           </div>
         </div>
@@ -161,6 +179,11 @@ const services = [
 
             <!-- Right: detail list -->
             <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+              {s.image && (
+                <div class="rounded-2xl overflow-hidden aspect-video mb-6 shadow-lg shadow-black/50 border border-dark-border/40">
+                  <img src={s.image} alt={s.title} class="w-full h-full object-cover" loading="lazy" />
+                </div>
+              )}
               <div class="border border-dark-border rounded-2xl p-6 md:p-8 bg-dark-card/40">
                 <div class="text-xs text-text-muted tracking-widest uppercase mb-5">Co je v ceně</div>
                 <ul class="space-y-3.5">
