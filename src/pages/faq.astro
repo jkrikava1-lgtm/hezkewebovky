@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import data from '../content/faq.json';
+
+const title = 'Časté otázky (FAQ) | Hezké webovky';
+const description = 'Odpovědi na nejčastější otázky o tvorbě webových stránek – ceny, termíny, platby, správa obsahu a spolupráce.';
+---
+
+<Layout {title} {description} noLoader>
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 55% 50% at 30% 40%, rgba(200,255,0,0.08) 0%, transparent 60%)">
+      </div>
+      <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        <nav class="text-xs text-text-muted mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Hezké webovky</a>
+          <span>/</span>
+          <span class="text-white/50">Časté otázky</span>
+        </nav>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">FAQ</div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+              {data.heading}<br/>
+              <span class="text-accent">{data.heading_accent}</span>
+            </h1>
+            <p class="text-text-secondary text-xl leading-relaxed">
+              Všechno, co vás zajímá před tím, než se rozhodnete. Pokud tu odpověď nenajdete, napište mi.
+            </p>
+          </div>
+
+          <div class="hidden lg:block">
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/70 border border-dark-border/40">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80&auto=format&fit=crop"
+                alt="Časté otázky o tvorbě webů"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ items -->
+    <section class="pb-24 md:pb-32">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="max-w-3xl">
+          {data.items.map((item, i) => (
+            <details class={`group border-b border-dark-border`}>
+              <summary class="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-base md:text-lg font-medium hover:text-accent transition-colors">
+                {item.q}
+                <span class="shrink-0 w-5 h-5 text-accent transition-transform duration-300 group-open:rotate-45">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
+                  </svg>
+                </span>
+              </summary>
+              <p class="pb-5 text-text-secondary leading-relaxed text-base">
+                {item.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-24 md:py-32 section-gradient">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8 text-center">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Nestačilo?</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          Napište mi přímo<br/><span class="text-accent">a odpovím do 24 hodin.</span>
+        </h2>
+        <a href="mailto:info@hezkewebovky.cz" class="inline-flex items-center gap-3 px-8 py-5 bg-accent text-black rounded-full font-bold text-sm tracking-wider uppercase hover:bg-white transition-all duration-500">
+          info@hezkewebovky.cz
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": data.items.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+})} /></script>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Hezké webovky", "item": "https://hezkewebovky.cz" },
+    { "@type": "ListItem", "position": 2, "name": "Časté otázky", "item": "https://hezkewebovky.cz/faq" }
+  ]
+})} /></script>
