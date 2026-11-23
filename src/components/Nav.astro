@@ -10,7 +10,7 @@ const links = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar" style="background: rgba(10,10,10,0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar" style="background: rgba(10,10,10,0.2); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" onclick="event.preventDefault(); if(location.pathname==='/'){window.history.replaceState({},'','/');window.scrollTo({top:0,behavior:'smooth'});}else{location.href='/'}" class="flex items-center gap-0 text-xl md:text-4xl tracking-tight cursor-pointer" data-hover>
@@ -49,7 +49,7 @@ const links = [
   </div>
 
   <!-- Mobile menu -->
-  <div class="lg:hidden hidden border-t border-white/10" id="mobile-menu" style="background: rgba(10,10,10,0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+  <div class="lg:hidden hidden border-t border-white/10" id="mobile-menu" style="background: rgba(10,10,10,0.3); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
     <div class="px-6 py-6 flex flex-col gap-1">
       {links.map(({ label, href }) => (
         <a href={href} class="text-white/70 text-base py-2 hover:text-white transition-colors">{label}</a>
