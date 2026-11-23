@@ -442,5 +442,29 @@ const canonicalUrl = Astro.url.href;
     <script>
       (function(){let v:string|null=null;function c(){fetch('/version.json?_='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then((d:{v:string})=>{if(d.v==='dev')return;if(v===null){v=d.v;return;}if(d.v!==v)location.reload();}).catch(()=>{});}c();setInterval(c,30000);})();
     </script>
+    <script is:inline>
+      (function() {
+        var ticking = false;
+        function updateGlow() {
+          var scrollY = window.scrollY;
+          var maxScroll = document.body.scrollHeight - window.innerHeight;
+          var progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+          // Main glow: starts top-center, drifts right and down
+          var gx = 50 + progress * 20;
+          var gy = 25 + progress * 40;
+          // Secondary glow: starts left-mid, drifts right
+          var g2x = 15 + progress * 35;
+          var g2y = 65 - progress * 20;
+          document.body.style.setProperty('--glow-x', gx + '%');
+          document.body.style.setProperty('--glow-y', gy + '%');
+          document.body.style.setProperty('--glow2-x', g2x + '%');
+          document.body.style.setProperty('--glow2-y', g2y + '%');
+          ticking = false;
+        }
+        window.addEventListener('scroll', function() {
+          if (!ticking) { requestAnimationFrame(updateGlow); ticking = true; }
+        }, { passive: true });
+      })();
+    </script>
   </body>
 </html>
