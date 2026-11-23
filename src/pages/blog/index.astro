@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
+import Faq from '../../components/Faq.astro';
 
 const posts = [
   {
@@ -20,34 +21,72 @@ const posts = [
   noLoader
 >
   <Nav />
-  <main class="pt-32 pb-24">
-    <div class="max-w-[1400px] mx-auto px-4 md:px-8">
-      <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-4">Blog</div>
-      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-        Praktické rady o <span class="text-accent">webech</span>
-      </h1>
-      <p class="text-text-secondary text-lg mb-16 max-w-xl">Tipy pro firmy a živnostníky – ceny, SEO a jak z webu získat zákazníky.</p>
+  <main>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map(post => (
-          <a href={post.href} class="group block p-6 border border-dark-border rounded-2xl hover:border-accent/40 transition-all duration-300">
-            <div class="flex items-center gap-3 text-xs text-text-muted mb-4">
-              <time datetime={post.date}>{new Date(post.date).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-              <span>·</span>
-              <span>{post.readingTime}</span>
-            </div>
-            <h2 class="text-lg font-semibold mb-2 group-hover:text-accent transition-colors duration-300 leading-snug">{post.title}</h2>
-            <p class="text-text-secondary text-sm leading-relaxed">{post.description}</p>
-            <div class="mt-4 text-accent text-xs tracking-wider uppercase flex items-center gap-1">
-              Číst článek
-              <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
-            </div>
-          </a>
-        ))}
+    <!-- Hero -->
+    <section class="pt-28 pb-16 md:pt-40 md:pb-20 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 55% 50% at 65% 40%, rgba(200,255,0,0.07) 0%, transparent 60%)">
       </div>
-    </div>
+      <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
+        <nav class="text-xs text-text-muted mb-8 flex items-center gap-2" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-accent transition-colors">Hezké webovky</a>
+          <span>/</span>
+          <span class="text-white/50">Blog</span>
+        </nav>
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-5">Blog</div>
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] mb-6">
+              Praktické rady<br/>
+              <span class="text-accent">o webech</span>
+            </h1>
+            <p class="text-text-secondary text-xl leading-relaxed">
+              Tipy pro firmy a živnostníky – ceny, SEO a jak z webu získat zákazníky.
+            </p>
+          </div>
+
+          <div class="hidden lg:block">
+            <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/70 border border-dark-border/40">
+              <img
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=900&q=80&auto=format&fit=crop"
+                alt="Blog o tvorbě webových stránek"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Posts -->
+    <section class="pb-24 md:pb-32">
+      <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map(post => (
+            <a href={post.href} class="group block p-6 border border-dark-border rounded-2xl hover:border-accent/40 transition-all duration-300">
+              <div class="flex items-center gap-3 text-xs text-text-muted mb-4">
+                <time datetime={post.date}>{new Date(post.date).toLocaleDateString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+                <span>·</span>
+                <span>{post.readingTime}</span>
+              </div>
+              <h2 class="text-lg font-semibold mb-2 group-hover:text-accent transition-colors duration-300 leading-snug">{post.title}</h2>
+              <p class="text-text-secondary text-sm leading-relaxed">{post.description}</p>
+              <div class="mt-4 text-accent text-xs tracking-wider uppercase flex items-center gap-1">
+                Číst článek
+                <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Faq />
+
   </main>
   <Footer />
 </Layout>
