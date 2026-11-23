@@ -37,7 +37,7 @@ const links = [
     <!-- CTA -->
     <a
       href="/#kontakt"
-      class="hidden lg:inline-flex magnetic-btn px-5 py-2.5 bg-accent text-black rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-white transition-all duration-500"
+      class="nav-cta magnetic-btn px-5 py-2.5 bg-accent text-black rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-white transition-all duration-500"
       data-hover
     >
       Chci hezký web
@@ -67,6 +67,10 @@ const links = [
 <style>
   #navbar-inner {
     will-change: max-width, border-radius, background, padding;
+  }
+  .nav-cta { display: none; }
+  @media (min-width: 1024px) {
+    .nav-cta { display: inline-flex; }
   }
 </style>
 
