@@ -392,7 +392,11 @@ body.cursor-hover .cursor-ring {
 .section-gradient {
   background:
     radial-gradient(ellipse 55% 55% at 85% 15%, rgba(200, 255, 0, 0.14) 0%, transparent 55%),
-    var(--color-dark-soft);
+    linear-gradient(to bottom,
+      transparent 0%,
+      var(--color-dark-soft) 18%,
+      var(--color-dark-soft) 82%,
+      transparent 100%);
 }
 
 /* ===== TOUCH DEVICES: disable everything heavy ===== */
