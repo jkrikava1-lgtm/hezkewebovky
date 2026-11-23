@@ -32,7 +32,7 @@ const icons = [
     <!-- Service list -->
     <div class="space-y-0">
       {services.map((service, idx) => (
-        <div class="reveal group service-card border-t last:border-b border-dark-border py-10 md:py-12" data-hover>
+        <a href={service.href} class="reveal group service-card border-t last:border-b border-dark-border py-10 md:py-12 block" data-hover>
           <div class="flex flex-col md:flex-row md:items-start gap-6 md:gap-16">
             <!-- Number + icon -->
             <div class="flex items-center gap-3 md:w-16 shrink-0">
@@ -67,7 +67,7 @@ const icons = [
               </div>
             </div>
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
