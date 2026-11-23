@@ -13,9 +13,9 @@ import data from '../content/process.json';
       </div>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-dark-border rounded-xl overflow-hidden">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
       {data.steps.map((step, i) => (
-        <div class={`reveal reveal-delay-${i} bg-dark-soft p-8 md:p-10 group`} data-hover>
+        <div class={`reveal reveal-delay-${i} group`} data-hover>
           <div class="text-accent text-xs font-mono mb-8">{step.num}</div>
           <h3 class="text-xl font-semibold mb-4 group-hover:text-accent transition-colors duration-500">{step.title}</h3>
           <p class="text-text-secondary text-base leading-relaxed">{step.description}</p>
