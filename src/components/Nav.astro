@@ -10,12 +10,15 @@ const links = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar" style="background: rgba(10,10,10,0.2); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05);">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
+<nav class="fixed top-0 left-0 right-0 z-50 pt-4 md:pt-5 transition-all duration-500 ease-out" id="navbar">
+  <!-- Wrapper that transitions from full-width bar to floating pill -->
+  <div class="transition-all duration-500 ease-out mx-auto flex items-center justify-between" id="navbar-inner"
+       style="max-width: 1400px; padding: 12px 32px; border-radius: 0px; background: transparent; border: 1px solid transparent;">
+
     <!-- Logo -->
-    <a href="/" onclick="event.preventDefault(); if(location.pathname==='/'){window.history.replaceState({},'','/');window.scrollTo({top:0,behavior:'smooth'});}else{location.href='/'}" class="flex items-center gap-0 text-xl md:text-4xl tracking-tight cursor-pointer" data-hover>
-      <span class="relative font-bold text-white" style="font-family: 'Inter', sans-serif;">hezké<img src="/icon-cursor.png" alt="" class="absolute -top-1.5 md:-top-3.5 -right-1.5 md:-right-3 h-5 md:h-10 object-contain logo-cursor" /></span>
-      <span class="font-light text-white ml-1 md:ml-2.5" style="font-family: 'Nunito', sans-serif;">webovky</span>
+    <a href="/" onclick="event.preventDefault(); if(location.pathname==='/'){window.history.replaceState({},'','/');window.scrollTo({top:0,behavior:'smooth'});}else{location.href='/'}" class="flex items-center gap-0 tracking-tight cursor-pointer" id="nav-logo" data-hover>
+      <span class="relative font-bold text-white transition-all duration-500" id="nav-logo-text" style="font-family: 'Inter', sans-serif; font-size: 2.25rem;">hezké<img src="/icon-cursor.png" alt="" class="absolute object-contain logo-cursor" id="nav-logo-icon" style="top: -0.875rem; right: -0.75rem; height: 2.5rem;" /></span>
+      <span class="font-light text-white ml-2.5 transition-all duration-500" id="nav-logo-sub" style="font-family: 'Nunito', sans-serif; font-size: 2.25rem;">webovky</span>
     </a>
 
     <!-- Desktop menu -->
@@ -49,7 +52,7 @@ const links = [
   </div>
 
   <!-- Mobile menu -->
-  <div class="lg:hidden hidden border-t border-white/10" id="mobile-menu" style="background: rgba(10,10,10,0.3); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+  <div class="lg:hidden hidden border-t border-white/10" id="mobile-menu" style="background: rgba(10,10,10,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
     <div class="px-6 py-6 flex flex-col gap-1">
       {links.map(({ label, href }) => (
         <a href={href} class="text-white/70 text-base py-2 hover:text-white transition-colors">{label}</a>
@@ -61,7 +64,64 @@ const links = [
   </div>
 </nav>
 
+<style>
+  #navbar-inner {
+    will-change: max-width, border-radius, background, padding;
+  }
+</style>
+
 <script>
+  const navbar = document.getElementById('navbar');
+  const inner = document.getElementById('navbar-inner') as HTMLElement | null;
+  const logoText = document.getElementById('nav-logo-text') as HTMLElement | null;
+  const logoSub = document.getElementById('nav-logo-sub') as HTMLElement | null;
+  const logoIcon = document.getElementById('nav-logo-icon') as HTMLElement | null;
+
+  let scrolled = false;
+
+  function updateNav() {
+    const isScrolled = window.scrollY > 60;
+    if (isScrolled === scrolled) return;
+    scrolled = isScrolled;
+
+    if (!inner) return;
+
+    if (isScrolled) {
+      // Pill / Dynamic Island state
+      inner.style.maxWidth = '860px';
+      inner.style.padding = '10px 20px';
+      inner.style.borderRadius = '100px';
+      inner.style.background = 'rgba(12,12,12,0.65)';
+      inner.style.backdropFilter = 'blur(20px)';
+      (inner.style as any).webkitBackdropFilter = 'blur(20px)';
+      inner.style.border = '1px solid rgba(255,255,255,0.08)';
+      inner.style.boxShadow = '0 8px 32px rgba(0,0,0,0.4)';
+      // Shrink logo
+      if (logoText) { logoText.style.fontSize = '1.25rem'; logoText.style.lineHeight = '1'; }
+      if (logoSub) { logoSub.style.fontSize = '1.25rem'; logoSub.style.marginLeft = '0.5rem'; }
+      if (logoIcon) { logoIcon.style.top = '-0.4rem'; logoIcon.style.right = '-0.4rem'; logoIcon.style.height = '1.4rem'; }
+      navbar!.style.paddingTop = '10px';
+    } else {
+      // Full bar state
+      inner.style.maxWidth = '1400px';
+      inner.style.padding = '12px 32px';
+      inner.style.borderRadius = '0px';
+      inner.style.background = 'transparent';
+      inner.style.backdropFilter = 'none';
+      (inner.style as any).webkitBackdropFilter = 'none';
+      inner.style.border = '1px solid transparent';
+      inner.style.boxShadow = 'none';
+      // Restore logo
+      if (logoText) { logoText.style.fontSize = '2.25rem'; logoText.style.lineHeight = ''; }
+      if (logoSub) { logoSub.style.fontSize = '2.25rem'; logoSub.style.marginLeft = '0.625rem'; }
+      if (logoIcon) { logoIcon.style.top = '-0.875rem'; logoIcon.style.right = '-0.75rem'; logoIcon.style.height = '2.5rem'; }
+      navbar!.style.paddingTop = '1.25rem';
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
   // Mobile menu
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
@@ -69,5 +129,4 @@ const links = [
   menu?.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => menu?.classList.add('hidden'));
   });
-
 </script>
