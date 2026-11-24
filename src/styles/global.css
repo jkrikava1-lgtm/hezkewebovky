@@ -15,6 +15,11 @@
 /* ===== BASE ===== */
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 html.lenis, html.lenis body {
