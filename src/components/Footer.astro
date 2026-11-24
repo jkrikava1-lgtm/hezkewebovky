@@ -1,15 +1,105 @@
 ---
+import data from '../content/contact.json';
 const year = new Date().getFullYear();
+
+const navLinks = [
+  { label: 'Služby', href: '/sluzby' },
+  { label: 'Ukázky', href: '/ukazky' },
+  { label: 'Cena', href: '/cena' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'O mně', href: '/o-mne' },
+];
 ---
 
-<footer class="border-t border-dark-border py-8">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-2 text-text-muted" style="font-family: 'Nunito', sans-serif;">
-      <img src="/icon-cursor.png" alt="" class="h-4 object-contain opacity-40" />
-      <span class="text-sm tracking-wider"><span class="font-bold" style="font-family: 'Inter', sans-serif;">hezké</span><span class="font-light" style="font-family: 'Nunito', sans-serif;">webovky</span> &middot; &copy; {year}</span>
+<footer class="border-t border-dark-border mt-0">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+
+    <!-- Main footer grid -->
+    <div class="grid md:grid-cols-3 gap-12 md:gap-16 py-16 md:py-20">
+
+      <!-- Col 1: Brand -->
+      <div class="md:col-span-1">
+        <a href="/" class="inline-flex items-center gap-0 mb-5" data-hover>
+          <span class="font-bold text-white text-xl" style="font-family: 'Inter', sans-serif;">hezké</span>
+          <span class="font-light text-white text-xl" style="font-family: 'Nunito', sans-serif; margin-left: 0.3rem;">webovky</span>
+        </a>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xs">
+          Profesionální weby na míru pro firmy všech velikostí. Hotovo do 3 týdnů, od 9 900 Kč.
+        </p>
+        <div class="mt-6 flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
+          <span class="text-text-muted text-xs">Aktuálně přijímáme nové projekty</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation -->
+      <div>
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-6">Navigace</div>
+        <ul class="space-y-3">
+          {navLinks.map(({ label, href }) => (
+            <li>
+              <a href={href} class="text-text-secondary text-sm hover:text-accent transition-colors duration-300" data-hover>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Contact -->
+      <div>
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-6">Kontakt</div>
+        <ul class="space-y-4">
+          <li>
+            <div class="text-text-muted text-xs mb-1">Email</div>
+            <a href={`mailto:${data.email}`} class="text-text-secondary text-sm hover:text-accent transition-colors duration-300" data-hover>
+              {data.email}
+            </a>
+          </li>
+          <li>
+            <div class="text-text-muted text-xs mb-1">Telefon</div>
+            <a href={`tel:${data.phone_link}`} class="text-text-secondary text-sm hover:text-accent transition-colors duration-300" data-hover>
+              {data.phone}
+            </a>
+          </li>
+          <li>
+            <div class="text-text-muted text-xs mb-1">Odezva</div>
+            <span class="text-text-secondary text-sm">{data.response_time}</span>
+          </li>
+        </ul>
+        <a
+          href="/#kontakt"
+          class="mt-8 inline-flex items-center gap-2.5 px-5 py-2.5 border border-accent/40 text-accent rounded-full text-xs tracking-wider uppercase font-medium hover:bg-accent hover:text-black transition-all duration-500"
+          data-hover
+        >
+          Napsat zprávu
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </a>
+      </div>
     </div>
-    <button onclick="window.history.replaceState({}, '', '/'); window.scrollTo({top: 0, behavior: 'smooth'})" class="text-text-muted hover:text-accent text-xs tracking-wider uppercase transition-colors cursor-pointer" data-hover>
-      Zpět nahoru
-    </button>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-dark-border py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-text-muted text-xs">
+        &copy; {year} hezkewebovky.cz &middot; Jakub Křikava
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="/ochrana-osobnich-udaju" class="text-text-muted text-xs hover:text-accent transition-colors duration-300">Ochrana osobních údajů</a>
+        <button
+          onclick="window.history.replaceState({}, '', '/'); window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="text-text-muted hover:text-accent text-xs tracking-wider uppercase transition-colors flex items-center gap-1.5"
+          data-hover
+        >
+          Zpět nahoru
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
   </div>
 </footer>
