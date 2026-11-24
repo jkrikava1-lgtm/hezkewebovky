@@ -3,18 +3,20 @@
 
 <section class="relative overflow-hidden py-10 md:py-16" id="ukazka">
 
-  <!-- Devices (behind label) -->
-  <div class="relative max-w-5xl mx-auto h-[300px] md:h-[520px] px-4">
+  <!-- Devices -->
+  <div class="relative max-w-5xl mx-auto h-[360px] md:h-[580px] px-4">
 
     <!-- Laptop -->
     <img
       src="/device-laptop.webp"
       alt="Web hezkewebovky.cz na notebooku"
-      class="absolute bottom-0 left-[1%] md:left-[2%] w-[58%] md:w-[54%] h-auto reveal"
+      class="absolute bottom-0 left-[1%] md:left-[2%] w-[56%] md:w-[52%] h-auto reveal"
       loading="lazy"
       style="
-        mask-image: radial-gradient(ellipse 90% 88% at 48% 68%, black 42%, transparent 90%);
-        -webkit-mask-image: radial-gradient(ellipse 90% 88% at 48% 68%, black 42%, transparent 90%);
+        mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        mask-composite: intersect;
+        -webkit-mask-composite: source-in;
       "
     />
 
@@ -22,17 +24,19 @@
     <img
       src="/device-phone.webp"
       alt="Web hezkewebovky.cz na mobilu"
-      class="absolute bottom-0 right-[1%] md:right-[6%] w-[30%] md:w-[26%] h-auto reveal"
+      class="absolute bottom-0 right-[1%] md:right-[6%] w-[28%] md:w-[25%] h-auto reveal"
       loading="lazy"
       style="
-        mask-image: radial-gradient(ellipse 72% 88% at 50% 60%, black 40%, transparent 90%);
-        -webkit-mask-image: radial-gradient(ellipse 72% 88% at 50% 60%, black 40%, transparent 90%);
+        mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 76%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        mask-composite: intersect;
+        -webkit-mask-composite: source-in;
       "
     />
 
   </div>
 
-  <!-- Label – above devices -->
+  <!-- Label -->
   <div class="text-center mt-6 md:mt-8 reveal relative z-10">
     <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
       <div class="w-6 h-px bg-accent/40"></div>
