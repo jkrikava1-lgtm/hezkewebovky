@@ -30,7 +30,26 @@
             <div class="browser-url">hezkewebovky.cz</div>
           </div>
           <div class="browser-screen">
-            <img src="/screenshot-desktop.webp" alt="Web hezkewebovky.cz na počítači" loading="lazy" />
+            <div class="ms-site">
+
+              <!-- Mini nav -->
+              <div class="ms-nav">
+                <div class="ms-logo">hezké<span>webovky</span></div>
+                <div class="ms-nav-links">SLUŽBY · UKÁZKY · CENA · KONTAKT</div>
+                <div class="ms-cta-btn">CHCI HEZKÝ WEB</div>
+              </div>
+
+              <!-- Mini hero -->
+              <div class="ms-hero">
+                <div class="ms-eyebrow">WEBOVÉ STRÁNKY PRO FIRMY VŠECH VELIKOSTÍ</div>
+                <div class="ms-heading">
+                  <span class="ms-glitch" data-text="Váš web je vaše">Váš web je vaše</span><br>
+                  <span class="ms-glitch ms-accent" data-text="vizitka">vizitka</span>
+                </div>
+                <p class="ms-para"><span class="ms-typed"></span><span class="ms-cursor">|</span></p>
+              </div>
+
+            </div>
           </div>
         </div>
 
@@ -100,13 +119,111 @@
   .browser-screen {
     display: block;
     background: #070d07;
-    max-height: 420px;
     overflow: hidden;
   }
-  .browser-screen img {
-    display: block;
-    width: 100%;
-    height: auto;
+
+  /* ── Mini website inside browser ───────────────── */
+  .ms-site {
+    background: #070d07;
+    font-family: system-ui, -apple-system, sans-serif;
+    user-select: none;
+  }
+
+  .ms-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(8px, 1.2vw, 14px) clamp(12px, 2vw, 24px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ms-logo {
+    font-size: clamp(10px, 1.1vw, 15px);
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+  .ms-logo span { color: #c8ff00; }
+  .ms-nav-links {
+    font-size: clamp(6px, 0.6vw, 9px);
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35);
+  }
+  .ms-cta-btn {
+    font-size: clamp(6px, 0.65vw, 9px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #000;
+    background: #c8ff00;
+    padding: clamp(3px, 0.4vw, 5px) clamp(7px, 0.8vw, 12px);
+    border-radius: 20px;
+  }
+
+  .ms-hero {
+    padding: clamp(16px, 2.5vw, 36px) clamp(12px, 2vw, 24px) clamp(12px, 2vw, 24px);
+  }
+  .ms-eyebrow {
+    font-size: clamp(5px, 0.55vw, 8px);
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: clamp(10px, 1.4vw, 18px);
+  }
+
+  .ms-heading {
+    font-size: clamp(18px, 3vw, 44px);
+    font-weight: 800;
+    line-height: 1.0;
+    color: white;
+    letter-spacing: -0.03em;
+    margin-bottom: clamp(10px, 1.5vw, 22px);
+  }
+  .ms-accent { color: #c8ff00; }
+
+  /* Always-on glitch */
+  .ms-glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .ms-glitch::before,
+  .ms-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .ms-glitch::before {
+    color: #ff00c8;
+    animation: ms-g1 4s infinite;
+  }
+  .ms-glitch::after {
+    color: #00fff9;
+    animation: ms-g2 4s infinite;
+  }
+  @keyframes ms-g1 {
+    0%,80%,100% { transform: translate(0); opacity: 0; }
+    81%,84% { transform: translate(-3px, 1px); opacity: 0.75; clip-path: inset(10% 0 70% 0); }
+    85%,88% { transform: translate(2px,-1px); opacity: 0.75; clip-path: inset(50% 0 20% 0); }
+    89%,92% { transform: translate(-2px, 2px); opacity: 0.75; clip-path: inset(30% 0 50% 0); }
+  }
+  @keyframes ms-g2 {
+    0%,80%,100% { transform: translate(0); opacity: 0; }
+    82%,85% { transform: translate(3px,-1px); opacity: 0.75; clip-path: inset(60% 0 10% 0); }
+    86%,89% { transform: translate(-2px, 1px); opacity: 0.75; clip-path: inset(20% 0 60% 0); }
+    90%,93% { transform: translate(2px,-2px); opacity: 0.75; clip-path: inset(40% 0 30% 0); }
+  }
+
+  .ms-para {
+    font-size: clamp(8px, 0.85vw, 13px);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+    min-height: 2.8em;
+  }
+  .ms-cursor {
+    display: inline-block;
+    color: #c8ff00;
+    animation: blink 0.8s step-end infinite;
+    margin-left: 1px;
+    font-weight: 300;
   }
 
   /* Tenký spodní bezel – naznačuje laptop rámeček */
@@ -167,3 +284,27 @@
   .phone-btn-l1 { left: -3px;  top: 85px;  width: 3px; height: 28px; border-radius: 2px 0 0 2px; }
   .phone-btn-l2 { left: -3px;  top: 125px; width: 3px; height: 52px; border-radius: 2px 0 0 2px; }
 </style>
+
+<script is:inline>
+(function () {
+  const text = 'Profesionální web nemusí stát desítky tisíc. Vytvořím vám stránky, které udělají dojem – za férovou cenu.';
+  const el = document.querySelector('.ms-typed');
+  if (!el) return;
+  let i = 0, deleting = false;
+
+  function tick() {
+    if (!deleting) {
+      el.textContent = text.slice(0, i + 1);
+      i++;
+      if (i === text.length) { deleting = true; setTimeout(tick, 2200); return; }
+      setTimeout(tick, 42);
+    } else {
+      el.textContent = text.slice(0, i - 1);
+      i--;
+      if (i === 0) { deleting = false; setTimeout(tick, 600); return; }
+      setTimeout(tick, 18);
+    }
+  }
+  tick();
+})();
+</script>
