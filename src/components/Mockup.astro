@@ -7,19 +7,33 @@
 
     <div class="relative h-[300px] md:h-[500px]">
 
-      <!-- Desktop / Browser mockup -->
-      <div class="mockup-browser absolute bottom-0 left-0 w-[72%] md:w-[67%] reveal">
-        <div class="browser-chrome">
-          <div class="browser-dots">
-            <span class="dot dot-r"></span>
-            <span class="dot dot-y"></span>
-            <span class="dot dot-g"></span>
+      <!-- Desktop / Laptop mockup -->
+      <div class="mockup-laptop absolute bottom-0 left-0 w-[76%] md:w-[70%] reveal">
+
+        <!-- Screen lid -->
+        <div class="laptop-lid">
+          <div class="browser-chrome">
+            <div class="browser-dots">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+            </div>
+            <div class="browser-url">hezkewebovky.cz</div>
           </div>
-          <div class="browser-url">hezkewebovky.cz</div>
+          <div class="browser-screen">
+            <img src="/screenshot-desktop.webp" alt="Web hezkewebovky.cz na počítači" loading="lazy" />
+          </div>
         </div>
-        <div class="browser-screen">
-          <img src="/screenshot-desktop.webp" alt="Web hezkewebovky.cz na počítači" loading="lazy" />
+
+        <!-- Hinge -->
+        <div class="laptop-hinge"></div>
+
+        <!-- Keyboard base -->
+        <div class="laptop-base">
+          <div class="laptop-keyboard"></div>
+          <div class="laptop-trackpad"></div>
         </div>
+
       </div>
 
       <!-- Phone mockup -->
@@ -51,13 +65,14 @@
 </section>
 
 <style>
-  /* ── Browser mockup ─────────────────────────────── */
-  .mockup-browser {
-    border-radius: 10px;
+  /* ── Laptop mockup ──────────────────────────────── */
+  .laptop-lid {
+    border-radius: 8px 8px 0 0;
     overflow: hidden;
+    background: #111;
     box-shadow:
       0 0 0 1px rgba(255,255,255,0.08),
-      0 24px 64px rgba(0,0,0,0.6),
+      0 20px 60px rgba(0,0,0,0.65),
       0 4px 12px rgba(0,0,0,0.4);
   }
 
@@ -65,15 +80,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 14px;
+    padding: 8px 14px;
     background: #1a1f1a;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .browser-dots { display: flex; gap: 6px; flex-shrink: 0; }
-  .dot {
-    width: 10px; height: 10px; border-radius: 50%;
-  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
   .dot-r { background: #ff5f57; }
   .dot-y { background: #febc2e; }
   .dot-g { background: #28c840; }
@@ -92,13 +105,54 @@
   .browser-screen {
     display: block;
     background: #070d07;
-    mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
   }
   .browser-screen img {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  /* Hinge */
+  .laptop-hinge {
+    height: 4px;
+    background: linear-gradient(to bottom, #555, #777);
+  }
+
+  /* Keyboard base – výška přibližně 28% výšky screenu */
+  .laptop-base {
+    background: linear-gradient(160deg, #d4d4d4 0%, #bebebe 60%, #aaaaaa 100%);
+    border-radius: 0 0 6px 6px;
+    padding: 8px 10px 12px;
+    aspect-ratio: 16 / 4.5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .laptop-keyboard {
+    flex: 1;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,0.13) 0px, rgba(0,0,0,0.13) 1px,
+      transparent 1px, transparent 7px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.13) 0px, rgba(0,0,0,0.13) 1px,
+      transparent 1px, transparent 7px
+    );
+    border-radius: 3px;
+  }
+
+  .laptop-trackpad {
+    width: 32%;
+    aspect-ratio: 16 / 10;
+    background: rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.13);
+    border-radius: 3px;
+    margin: 0 auto;
+    flex-shrink: 0;
   }
 
   /* ── Phone mockup ───────────────────────────────── */
