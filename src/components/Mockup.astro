@@ -1,34 +1,44 @@
 ---
 ---
 
-<section class="pb-10 md:pb-16 overflow-hidden relative" id="ukazka">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+<section class="relative overflow-hidden py-10 md:py-16" id="ukazka">
 
-    <!-- Label -->
-    <div class="text-center mb-10 reveal">
-      <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
-        <div class="w-6 h-px bg-accent/40"></div>
-        Funguje skvěle na všech zařízeních
-        <div class="w-6 h-px bg-accent/40"></div>
-      </div>
+  <!-- Label -->
+  <div class="text-center mb-8 md:mb-12 reveal relative z-10">
+    <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
+      <div class="w-6 h-px bg-accent/40"></div>
+      Funguje skvěle na všech zařízeních
+      <div class="w-6 h-px bg-accent/40"></div>
     </div>
+  </div>
 
-    <!-- Device mockup image -->
-    <div class="relative max-w-4xl mx-auto reveal">
-      <img
-        src="/device-mockup.webp"
-        alt="Hezké webovky – ukázka webu na notebooku a mobilu"
-        class="w-full h-auto"
-        loading="lazy"
-      />
-    </div>
+  <!-- Devices -->
+  <div class="relative max-w-5xl mx-auto h-[340px] md:h-[500px] px-4">
 
-    <!-- Bottom link -->
-    <div class="mt-10 text-center reveal">
-      <a href="#ukazky" class="text-text-muted text-sm hover:text-accent transition-colors duration-300 underline underline-offset-4 decoration-dark-border hover:decoration-accent" data-hover>
-        Prohlédnout ukázky projektů
-      </a>
-    </div>
+    <!-- Laptop -->
+    <img
+      src="/device-laptop.webp"
+      alt="Web hezkewebovky.cz na notebooku"
+      class="absolute bottom-0 left-[-4%] md:left-[0%] w-[72%] md:w-[68%] h-auto reveal"
+      loading="lazy"
+      style="
+        mask-image: radial-gradient(ellipse 90% 88% at 48% 68%, black 42%, transparent 90%);
+        -webkit-mask-image: radial-gradient(ellipse 90% 88% at 48% 68%, black 42%, transparent 90%);
+      "
+    />
+
+    <!-- Phone -->
+    <img
+      src="/device-phone.webp"
+      alt="Web hezkewebovky.cz na mobilu"
+      class="absolute bottom-0 right-[-2%] md:right-[4%] w-[26%] md:w-[22%] h-auto reveal"
+      loading="lazy"
+      style="
+        mask-image: radial-gradient(ellipse 72% 88% at 50% 60%, black 40%, transparent 90%);
+        -webkit-mask-image: radial-gradient(ellipse 72% 88% at 50% 60%, black 40%, transparent 90%);
+      "
+    />
 
   </div>
+
 </section>
