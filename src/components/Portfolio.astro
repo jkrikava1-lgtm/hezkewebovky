@@ -2,7 +2,7 @@
 import data from '../content/portfolio.json';
 const projects = data.projects;
 const featured = projects[0];
-const rest = projects.slice(1);
+const rest = projects.slice(1, 4);
 ---
 
 <section id="ukazky" class="pt-12 md:pt-16 pb-14 md:pb-32">
@@ -64,7 +64,7 @@ const rest = projects.slice(1);
     </a>
 
     <!-- Grid of remaining projects -->
-    <div class="grid md:grid-cols-2 gap-5">
+    <div class="grid md:grid-cols-3 gap-5">
       {rest.map((project, i) => (
         <a
           href={project.url}
@@ -100,6 +100,20 @@ const rest = projects.slice(1);
           </div>
         </a>
       ))}
+    </div>
+
+    <!-- Link to full portfolio -->
+    <div class="mt-10 flex justify-center reveal">
+      <a
+        href="/ukazky"
+        class="inline-flex items-center gap-3 px-6 py-3.5 border border-dark-border text-text-secondary rounded-full text-sm hover:border-accent/40 hover:text-accent transition-all duration-500"
+        data-hover
+      >
+        Všechny ukázky
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7M17 7v10" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>
