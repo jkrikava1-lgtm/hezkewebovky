@@ -307,7 +307,11 @@ const canonicalUrl = Astro.url.href;
     <!-- Loading screen – desktop only via JS -->
     {!noLoader && (
       <div class="loader hidden" id="loader">
-        <div class="loader-counter" id="loader-counter"></div>
+        <div class="loader-brand">hezké webovky</div>
+        <div class="loader-counter" id="loader-counter">0<span>%</span></div>
+        <div class="loader-bar-track">
+          <div class="loader-bar" id="loader-bar"></div>
+        </div>
       </div>
     )}
 
@@ -341,7 +345,7 @@ const canonicalUrl = Astro.url.href;
         if (isDesktop && !window.location.hash) {
           loader.classList.remove('hidden');
           const counter = document.getElementById('loader-counter');
-          counter.innerHTML = `0<span>%</span>`;
+          const bar = document.getElementById('loader-bar') as HTMLElement | null;
           let count = 0;
           const interval = setInterval(() => {
             count += Math.floor(Math.random() * 8) + 2;
@@ -349,9 +353,15 @@ const canonicalUrl = Astro.url.href;
               count = 100;
               clearInterval(interval);
               if (counter) counter.innerHTML = `100<span>%</span>`;
-              setTimeout(() => loader.classList.add('hidden'), 400);
+              if (bar) bar.style.width = '100%';
+              setTimeout(() => {
+                loader.classList.add('exiting');
+                setTimeout(() => loader.classList.add('hidden'), 950);
+              }, 350);
+            } else {
+              if (counter) counter.innerHTML = `${count}<span>%</span>`;
+              if (bar) bar.style.width = `${count}%`;
             }
-            if (counter) counter.innerHTML = `${count}<span>%</span>`;
           }, 40);
         }
       }
