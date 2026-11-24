@@ -449,12 +449,12 @@ const canonicalUrl = Astro.url.href;
           var scrollY = window.scrollY;
           var maxScroll = document.body.scrollHeight - window.innerHeight;
           var progress = maxScroll > 0 ? scrollY / maxScroll : 0;
-          // Main glow: starts top-center, drifts right and slightly down
-          var gx = 50 + progress * 18;
-          var gy = 25 + progress * 20;
-          // Secondary glow: starts left-mid, drifts right slowly
-          var g2x = 15 + progress * 25;
-          var g2y = 65 - progress * 10;
+          // Main glow: stays near viewport center, subtle drift
+          var gx = 45 + progress * 10;
+          var gy = 45 + progress * 10;
+          // Secondary glow: subtle drift
+          var g2x = 10 + progress * 20;
+          var g2y = 60 + progress * 10;
           document.body.style.setProperty('--glow-x', gx + '%');
           document.body.style.setProperty('--glow-y', gy + '%');
           document.body.style.setProperty('--glow2-x', g2x + '%');
