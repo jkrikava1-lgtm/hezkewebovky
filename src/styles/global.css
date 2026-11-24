@@ -8,7 +8,7 @@
   --color-accent: #c8ff00;
   --color-text-primary: #ffffff;
   --color-text-secondary: #9ca3af;
-  --color-text-muted: #6b7280;
+  --color-text-muted: #818a96;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -265,7 +265,7 @@ body.cursor-hover .cursor-ring {
   /* Higher text contrast on mobile */
   body {
     --color-text-secondary: #b0b8c8 !important;
-    --color-text-muted: #8891a3 !important;
+    --color-text-muted: #9199a8 !important;
   }
 
   /* Green accent word in headings – set by JS */
