@@ -5,7 +5,7 @@
 
   <div class="relative max-w-5xl mx-auto px-4">
 
-    <div class="relative h-[300px] md:h-[500px]">
+    <div class="relative h-[320px] md:h-[560px]">
 
       <!-- Desktop / Laptop mockup -->
       <div class="mockup-laptop absolute bottom-0 left-0 w-[76%] md:w-[70%] reveal">
@@ -25,14 +25,8 @@
           </div>
         </div>
 
-        <!-- Hinge -->
-        <div class="laptop-hinge"></div>
-
-        <!-- Keyboard base -->
-        <div class="laptop-base">
-          <div class="laptop-keyboard"></div>
-          <div class="laptop-trackpad"></div>
-        </div>
+        <!-- Bottom bezel (tenký rámeček jako u MacBook screenu) -->
+        <div class="laptop-bezel"></div>
 
       </div>
 
@@ -105,6 +99,8 @@
   .browser-screen {
     display: block;
     background: #070d07;
+    max-height: 420px;
+    overflow: hidden;
   }
   .browser-screen img {
     display: block;
@@ -112,47 +108,11 @@
     height: auto;
   }
 
-  /* Hinge */
-  .laptop-hinge {
-    height: 4px;
-    background: linear-gradient(to bottom, #555, #777);
-  }
-
-  /* Keyboard base – výška přibližně 28% výšky screenu */
-  .laptop-base {
-    background: linear-gradient(160deg, #d4d4d4 0%, #bebebe 60%, #aaaaaa 100%);
-    border-radius: 0 0 6px 6px;
-    padding: 8px 10px 12px;
-    aspect-ratio: 16 / 4.5;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .laptop-keyboard {
-    flex: 1;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(0,0,0,0.13) 0px, rgba(0,0,0,0.13) 1px,
-      transparent 1px, transparent 7px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0.13) 0px, rgba(0,0,0,0.13) 1px,
-      transparent 1px, transparent 7px
-    );
-    border-radius: 3px;
-  }
-
-  .laptop-trackpad {
-    width: 32%;
-    aspect-ratio: 16 / 10;
-    background: rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.13);
-    border-radius: 3px;
-    margin: 0 auto;
-    flex-shrink: 0;
+  /* Tenký spodní bezel – naznačuje laptop rámeček */
+  .laptop-bezel {
+    height: 10px;
+    background: linear-gradient(to bottom, #bbb, #999);
+    border-radius: 0 0 5px 5px;
   }
 
   /* ── Phone mockup ───────────────────────────────── */
