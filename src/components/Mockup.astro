@@ -2,22 +2,22 @@
 ---
 
 <section class="relative overflow-hidden py-10 md:py-16" id="ukazka">
-
   <div class="relative max-w-5xl mx-auto px-4">
 
-    <!-- Label -->
-    <div class="text-center mb-6 md:mb-10 reveal">
-      <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
-        <div class="w-6 h-px bg-accent/40"></div>
-        Náš web funguje skvěle i na mobilních zařízeních
-        <div class="w-6 h-px bg-accent/40"></div>
-      </div>
-    </div>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
 
-    <div class="flex justify-center">
+      <!-- Label -->
+      <div class="reveal text-center md:text-left order-2 md:order-1">
+        <div class="text-xs text-text-muted tracking-[0.25em] uppercase leading-relaxed">
+          <span class="inline-flex items-center gap-3">
+            <span class="w-6 h-px bg-accent/40 hidden md:block"></span>
+            Náš web funguje skvěle<br />i na mobilních zařízeních
+          </span>
+        </div>
+      </div>
 
       <!-- Phone mockup -->
-      <div class="mockup-phone w-[180px] md:w-[260px] reveal">
+      <div class="mockup-phone w-[150px] md:w-[200px] reveal order-1 md:order-2">
         <div class="phone-body">
           <div class="phone-island"></div>
           <div class="phone-screen">
@@ -32,11 +32,9 @@
     </div>
 
   </div>
-
 </section>
 
 <style>
-  /* ── Phone mockup ───────────────────────────────── */
   .mockup-phone {
     filter:
       drop-shadow(0 24px 48px rgba(0,0,0,0.65))
@@ -58,8 +56,8 @@
     top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 22px;
+    width: 70px;
+    height: 20px;
     background: #000;
     border-radius: 20px;
     z-index: 10;
@@ -83,7 +81,7 @@
     background: #1a1a1a;
     border-radius: 2px;
   }
-  .phone-btn-r  { right: -3px; top: 110px; width: 3px; height: 52px; border-radius: 0 2px 2px 0; }
-  .phone-btn-l1 { left: -3px;  top: 85px;  width: 3px; height: 28px; border-radius: 2px 0 0 2px; }
-  .phone-btn-l2 { left: -3px;  top: 125px; width: 3px; height: 52px; border-radius: 2px 0 0 2px; }
+  .phone-btn-r  { right: -3px; top: 90px;  width: 3px; height: 44px; border-radius: 0 2px 2px 0; }
+  .phone-btn-l1 { left: -3px;  top: 70px;  width: 3px; height: 24px; border-radius: 2px 0 0 2px; }
+  .phone-btn-l2 { left: -3px;  top: 103px; width: 3px; height: 44px; border-radius: 2px 0 0 2px; }
 </style>
