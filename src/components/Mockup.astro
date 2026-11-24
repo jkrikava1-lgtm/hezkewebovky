@@ -3,31 +3,44 @@
 
 <section class="relative overflow-hidden py-10 md:py-16" id="ukazka">
 
-  <!-- Devices -->
-  <div class="relative max-w-5xl mx-auto h-[380px] md:h-[620px] px-4">
+  <div class="relative max-w-5xl mx-auto px-4">
 
-    <!-- Laptop -->
-    <img
-      src="/device-laptop.webp"
-      alt="Web hezkewebovky.cz na notebooku"
-      class="absolute bottom-0 left-0 w-[80%] md:w-[75%] h-auto reveal"
-      loading="lazy"
-      style="mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);"
-    />
+    <div class="relative h-[300px] md:h-[500px]">
 
-    <!-- Phone -->
-    <img
-      src="/device-phone.webp"
-      alt="Web hezkewebovky.cz na mobilu"
-      class="absolute bottom-0 right-[0%] md:right-[4%] w-[30%] md:w-[26%] h-auto reveal"
-      loading="lazy"
-      style="mask-image: linear-gradient(to bottom, black 82%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);"
-    />
+      <!-- Desktop / Browser mockup -->
+      <div class="mockup-browser absolute bottom-0 left-0 w-[72%] md:w-[67%] reveal">
+        <div class="browser-chrome">
+          <div class="browser-dots">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+          </div>
+          <div class="browser-url">hezkewebovky.cz</div>
+        </div>
+        <div class="browser-screen">
+          <img src="/screenshot-desktop.webp" alt="Web hezkewebovky.cz na počítači" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="mockup-phone absolute bottom-0 right-0 md:right-[2%] w-[26%] md:w-[22%] reveal">
+        <div class="phone-body">
+          <div class="phone-island"></div>
+          <div class="phone-screen">
+            <img src="/screenshot-mobile.webp" alt="Web hezkewebovky.cz na mobilu" loading="lazy" />
+          </div>
+          <div class="phone-btn phone-btn-r"></div>
+          <div class="phone-btn phone-btn-l1"></div>
+          <div class="phone-btn phone-btn-l2"></div>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 
   <!-- Label -->
-  <div class="text-center mt-6 md:mt-8 reveal relative z-10">
+  <div class="text-center mt-6 md:mt-8 reveal">
     <div class="inline-flex items-center gap-3 text-xs text-text-muted tracking-[0.25em] uppercase">
       <div class="w-6 h-px bg-accent/40"></div>
       Funguje skvěle na všech zařízeních
@@ -36,3 +49,106 @@
   </div>
 
 </section>
+
+<style>
+  /* ── Browser mockup ─────────────────────────────── */
+  .mockup-browser {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 24px 64px rgba(0,0,0,0.6),
+      0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .browser-chrome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    background: #1a1f1a;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .browser-dots { display: flex; gap: 6px; flex-shrink: 0; }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+
+  .browser-url {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 5px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-family: ui-monospace, monospace;
+    text-align: center;
+  }
+
+  .browser-screen {
+    display: block;
+    background: #070d07;
+    mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  }
+  .browser-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Phone mockup ───────────────────────────────── */
+  .mockup-phone {
+    filter:
+      drop-shadow(0 24px 48px rgba(0,0,0,0.65))
+      drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  }
+
+  .phone-body {
+    position: relative;
+    background: #111;
+    border-radius: 40px;
+    padding: 11px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.12),
+      0 0 0 1px rgba(0,0,0,0.5);
+  }
+
+  .phone-island {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 22px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
+  }
+
+  .phone-screen {
+    border-radius: 30px;
+    overflow: hidden;
+    background: #000;
+    mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  }
+  .phone-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .phone-btn {
+    position: absolute;
+    background: #1a1a1a;
+    border-radius: 2px;
+  }
+  .phone-btn-r  { right: -3px; top: 110px; width: 3px; height: 52px; border-radius: 0 2px 2px 0; }
+  .phone-btn-l1 { left: -3px;  top: 85px;  width: 3px; height: 28px; border-radius: 2px 0 0 2px; }
+  .phone-btn-l2 { left: -3px;  top: 125px; width: 3px; height: 52px; border-radius: 2px 0 0 2px; }
+</style>
