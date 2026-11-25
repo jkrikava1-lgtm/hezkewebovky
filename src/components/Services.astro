@@ -124,6 +124,7 @@ const icons = [
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        player.playbackRate = 1.5;
         player.play().then(() => {
           player.style.opacity = '1';
           overlays.forEach(el => { el.style.opacity = '0'; el.style.pointerEvents = 'none'; });
