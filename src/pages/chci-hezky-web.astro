@@ -66,10 +66,7 @@ const perks = [
 
           <!-- Form -->
           <div>
-            <form class="space-y-6" id="contact-form" method="POST" action="https://api.web3forms.com/submit">
-              <input type="hidden" name="access_key" value="d208c7fb-2ac7-426d-bd06-1fdb9c4801e2" />
-              <input type="hidden" name="subject" value="Nová poptávka z hezkewebovky.cz/chci-hezky-web" />
-              <input type="hidden" name="from_name" value="Hezké webovky" />
+            <form class="space-y-6" id="contact-form">
               <div>
                 <input type="text" name="name" required placeholder="Jméno"
                   class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500" />
@@ -169,18 +166,15 @@ const perks = [
         var data = {};
         formData.forEach(function(value, key) { data[key] = value; });
 
-        fetch('https://api.web3forms.com/submit', {
+        fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
-            subject: 'Nová poptávka z hezkewebovky.cz/chci-hezky-web: ' + data.name,
-            from_name: 'Hezké webovky',
             name: data.name,
             email: data.email,
-            phone: data.phone || 'Neuvedeno',
-            'Typ projektu': data['project-type'] || 'Neuvedeno',
-            'Stávající web': data.website || 'Neuvedeno',
+            phone: data.phone || '',
+            'project-type': data['project-type'] || '',
+            website: data.website || '',
             message: data.message
           })
         }).then(function(res) {
