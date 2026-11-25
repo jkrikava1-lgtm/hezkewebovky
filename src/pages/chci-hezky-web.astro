@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import contact from '../content/contact.json';
+
+const title = 'Chci hezký web – poptávka zdarma | Hezké webovky';
+const description = 'Chcete nový web nebo redesign? Poptejte zdarma. Jednoduchý web hotový do 3 dnů od 9 900 Kč. Odpovím do 24 hodin.';
+
+const perks = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
+    title: 'Web do 3 dnů',
+    desc: 'Jednoduchý web mám hotový do 3 dnů od schválení návrhu.',
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>`,
+    title: 'Od 9 900 Kč',
+    desc: 'Férová cena, žádné skryté poplatky ani měsíční paušály.',
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>`,
+    title: 'Osobní přístup',
+    desc: 'Vždy víte, s kým mluvíte. Žádná agentura, žádní prostředníci.',
+  },
+];
+---
+
+<Layout {title} {description} noLoader>
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-12 md:pt-40 md:pb-16 relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+           style="background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200,255,0,0.07) 0%, transparent 65%)">
+      </div>
+      <div class="relative z-10 max-w-[860px] mx-auto px-4 md:px-8 text-center">
+        <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-6">Poptávka zdarma</div>
+        <h1 class="text-[clamp(2.4rem,7vw,5.5rem)] font-bold leading-[1.05] tracking-tight mb-6">
+          Chci <span class="text-accent">hezký web</span>
+        </h1>
+        <p class="text-text-secondary text-lg md:text-xl leading-relaxed max-w-lg mx-auto mb-10">
+          Vyplňte formulář – odpovím do 24 hodin a domluvíme se na dalším postupu. Bez závazků.
+        </p>
+
+        <!-- Perks -->
+        <div class="flex flex-wrap justify-center gap-3 mb-4">
+          {perks.map(p => (
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full border border-dark-border bg-dark-card/60 text-sm">
+              <svg class="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Fragment set:html={p.icon} />
+              </svg>
+              <span class="text-white font-medium">{p.title}</span>
+              <span class="text-text-muted hidden sm:inline">– {p.desc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Form + contact info -->
+    <section class="pb-20 md:pb-32">
+      <div class="max-w-[1100px] mx-auto px-4 md:px-8">
+        <div class="grid md:grid-cols-[1fr_320px] gap-10 md:gap-16 items-start">
+
+          <!-- Form -->
+          <div class="border border-dark-border rounded-3xl p-8 md:p-10 bg-dark-card/40">
+            <form class="space-y-6" id="contact-form" novalidate>
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <input type="text" name="name" required placeholder="Jméno a příjmení"
+                    class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-300" />
+                </div>
+                <div>
+                  <input type="email" name="email" required placeholder="Váš email"
+                    class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-300" />
+                </div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <input type="tel" name="phone" placeholder="Telefon (nepovinné)"
+                    class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-300" />
+                </div>
+                <div>
+                  <select name="project-type"
+                    class="w-full bg-transparent border-b border-dark-border py-4 text-text-muted focus:outline-none focus:border-accent transition-colors duration-300">
+                    <option value="" class="bg-dark">Typ projektu</option>
+                    <option value="new" class="bg-dark">Nový web</option>
+                    <option value="redesign" class="bg-dark">Redesign stávajícího webu</option>
+                    <option value="landing" class="bg-dark">Landing page</option>
+                    <option value="other" class="bg-dark">Jiné</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <input type="url" name="website" placeholder="Adresa stávajícího webu (pokud máte)"
+                  class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-300" />
+              </div>
+              <div>
+                <textarea name="message" rows="4" placeholder="Popište váš projekt – čím se zabýváte, co od webu potřebujete..."
+                  class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-300 resize-none"></textarea>
+              </div>
+
+              <div id="form-status" class="hidden py-3 px-4 text-center rounded-xl"></div>
+
+              <button type="submit" id="submit-btn"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 bg-accent text-black font-bold text-sm tracking-wider uppercase rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_32px_rgba(200,255,0,0.3)] hover:shadow-[0_0_48px_rgba(200,255,0,0.5)]">
+                <span id="submit-text">Odeslat poptávku</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact info -->
+          <div class="space-y-8 md:sticky md:top-28">
+            <div>
+              <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Kontakt</div>
+              <p class="text-white text-lg font-semibold">{contact.contact_person}</p>
+            </div>
+            <div>
+              <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Email</div>
+              <a href={`mailto:${contact.email}`} class="text-white hover:text-accent transition-colors text-base">
+                {contact.email}
+              </a>
+            </div>
+            <div>
+              <div class="text-text-muted text-xs tracking-[0.3em] uppercase mb-2">Telefon</div>
+              <a href={`tel:${contact.phone_link}`} class="text-white hover:text-accent transition-colors text-base">
+                {contact.phone}
+              </a>
+            </div>
+            <div class="border-t border-dark-border pt-6">
+              <div class="flex items-center gap-2.5">
+                <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></div>
+                <span class="text-text-secondary text-sm">Přijímám nové projekty</span>
+              </div>
+              <p class="text-text-muted text-sm mt-3">Odpovím do 24 hodin.</p>
+            </div>
+
+            <!-- Mini perks -->
+            <div class="space-y-4 border-t border-dark-border pt-6">
+              {perks.map(p => (
+                <div class="flex items-start gap-3">
+                  <span class="w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <Fragment set:html={p.icon} />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="text-white text-sm font-semibold">{p.title}</p>
+                    <p class="text-text-muted text-xs mt-0.5">{p.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    var submitText = document.getElementById('submit-text');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitText.textContent = 'Odesílám...';
+
+      var fd = new FormData(form);
+      var data = {};
+      fd.forEach(function (v, k) { data[k] = v; });
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
+          subject: 'Nová poptávka z hezkewebovky.cz/chci-hezky-web: ' + (data.name || ''),
+          from_name: 'Hezké webovky',
+          name: data.name,
+          email: data.email,
+          phone: data.phone || 'Neuvedeno',
+          'Typ projektu': data['project-type'] || 'Neuvedeno',
+          'Stávající web': data.website || 'Neuvedeno',
+          message: data.message,
+        }),
+      })
+        .then(function (res) {
+          if (res.ok) {
+            status.textContent = 'Odesláno! Ozveme se vám do 24 hodin.';
+            status.className = 'py-3 px-4 text-center rounded-xl bg-accent/10 text-accent';
+            form.reset();
+          } else {
+            throw new Error();
+          }
+        })
+        .catch(function () {
+          status.textContent = 'Něco se pokazilo. Zkuste to znovu nebo napište přímo na email.';
+          status.className = 'py-3 px-4 text-center rounded-xl bg-red-500/10 text-red-400';
+        })
+        .finally(function () {
+          submitText.textContent = 'Odeslat poptávku';
+          status.classList.remove('hidden');
+        });
+    });
+  });
+</script>
