@@ -66,7 +66,10 @@ const perks = [
 
           <!-- Form -->
           <div>
-            <form class="space-y-6" id="contact-form" novalidate>
+            <form class="space-y-6" id="contact-form" method="POST" action="https://api.web3forms.com/submit">
+              <input type="hidden" name="access_key" value="d208c7fb-2ac7-426d-bd06-1fdb9c4801e2" />
+              <input type="hidden" name="subject" value="Nová poptávka z hezkewebovky.cz/chci-hezky-web" />
+              <input type="hidden" name="from_name" value="Hezké webovky" />
               <div>
                 <input type="text" name="name" required placeholder="Jméno"
                   class="w-full bg-transparent border-b border-dark-border py-4 text-white placeholder:text-text-muted focus:outline-none focus:border-accent transition-colors duration-500" />
@@ -152,37 +155,35 @@ const perks = [
 </Layout>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('contact-form');
     var status = document.getElementById('form-status');
     var submitText = document.getElementById('submit-text');
 
-    if (!form) return;
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitText.textContent = 'Odesílám...';
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      submitText.textContent = 'Odesílám...';
+        var formData = new FormData(form);
+        var data = {};
+        formData.forEach(function(value, key) { data[key] = value; });
 
-      var fd = new FormData(form);
-      var data = {};
-      fd.forEach(function (v, k) { data[k] = v; });
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
-          subject: 'Nová poptávka z hezkewebovky.cz/chci-hezky-web: ' + (data.name || ''),
-          from_name: 'Hezké webovky',
-          name: data.name,
-          email: data.email,
-          phone: data.phone || 'Neuvedeno',
-          'Typ projektu': data['project-type'] || 'Neuvedeno',
-          'Stávající web': data.website || 'Neuvedeno',
-          message: data.message,
-        }),
-      })
-        .then(function (res) {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'd208c7fb-2ac7-426d-bd06-1fdb9c4801e2',
+            subject: 'Nová poptávka z hezkewebovky.cz/chci-hezky-web: ' + data.name,
+            from_name: 'Hezké webovky',
+            name: data.name,
+            email: data.email,
+            phone: data.phone || 'Neuvedeno',
+            'Typ projektu': data['project-type'] || 'Neuvedeno',
+            'Stávající web': data.website || 'Neuvedeno',
+            message: data.message
+          })
+        }).then(function(res) {
           if (res.ok) {
             status.textContent = 'Děkujeme! Ozveme se vám do 24 hodin.';
             status.className = 'py-3 text-center rounded-lg bg-accent/10 text-accent';
@@ -190,15 +191,14 @@ const perks = [
           } else {
             throw new Error();
           }
-        })
-        .catch(function () {
+        }).catch(function() {
           status.textContent = 'Něco se pokazilo. Zkuste to znovu nebo nám napište na email.';
           status.className = 'py-3 text-center rounded-lg bg-red-500/10 text-red-400';
-        })
-        .finally(function () {
+        }).finally(function() {
           submitText.textContent = 'Odeslat poptávku';
           status.classList.remove('hidden');
         });
-    });
+      });
+    }
   });
 </script>
